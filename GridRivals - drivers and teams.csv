@@ -1,0 +1,34 @@
+type,name,code,salary,round,points
+TEAM,Mercedes,MER,28.5,0,0
+TEAM,McLaren,MCL,28.5,0,0
+TEAM,Red Bull,RBR,25,0,0
+TEAM,Ferrari,FER,22.5,0,0
+TEAM,Aston Martin,AMR,20,0,0
+TEAM,Williams,WIL,17.5,0,0
+TEAM,Racing Bulls,RBS,15,0,0
+TEAM,Alpine,ALP,12.5,0,0
+TEAM,Audi,AUD,10,0,0
+TEAM,Cadillac,CAD,7.5,0,0
+TEAM,Haas,HAS,5,0,0
+DRIVER,M. Verstappen,RBR,30,0,0
+DRIVER,G. Russell,MER,28.7,0,0
+DRIVER,L. Norris,MCL,27.4,0,0
+DRIVER,O. Piastri,MCL,26.1,0,0
+DRIVER,K. Antonelli,MER,24.8,0,0
+DRIVER,C. Leclerc,FER,23.5,0,0
+DRIVER,F. Alonso,AMR,22.2,0,0
+DRIVER,L. Hamilton,FER,20.9,0,0
+DRIVER,I. Hadjar,RBR,19.6,0,0
+DRIVER,P. Gasly,ALP,18.3,0,0
+DRIVER,L. Stroll,AMR,17,0,0
+DRIVER,C. Sainz Jr,WIL,15.7,0,0
+DRIVER,L. Lawson,RBS,14.4,0,0
+DRIVER,A. Albon,WIL,13.1,0,0
+DRIVER,N. Hulkenberg,AUD,11.8,0,0
+DRIVER,G. Bortoleto,AUD,10.5,0,0
+DRIVER,O. Bearman,HAS,9.2,0,0
+DRIVER,E. Ocon,HAS,7.9,0,0
+DRIVER,V. Bottas,CAD,4.7,0,0
+DRIVER,S. Perez,CAD,4.7,0,0
+DRIVER,F. Colapinto,ALP,4.7,0,0
+DRIVER,A. Lindblad,RBS,4.6,0,0

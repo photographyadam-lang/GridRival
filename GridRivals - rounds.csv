@@ -1,0 +1,25 @@
+round,race_name,circuit,country,date_start,date_end,has_sprint,track_type
+1,Australian Grand Prix,Melbourne,Australia,3/6/2026,3/8/2026,FALSE,BALANCED
+2,Chinese Grand Prix,Shanghai,China,3/13/2026,3/15/2026,TRUE,HIGH_SPEED
+3,Japanese Grand Prix,Suzuka,Japan,3/27/2026,3/29/2026,FALSE,HIGH_DOWNFORCE
+4,Bahrain Grand Prix,Sakhir,Bahrain,4/10/2026,4/12/2026,FALSE,HIGH_SPEED
+5,Saudi Arabian Grand Prix,Jeddah,Saudi Arabia,4/17/2026,4/19/2026,FALSE,STREET
+6,Miami Grand Prix,Miami,USA,5/1/2026,5/3/2026,TRUE,STREET
+7,Canadian Grand Prix,Montreal,Canada,5/22/2026,5/24/2026,TRUE,STREET
+8,Monaco Grand Prix,Monaco,Monaco,6/5/2026,6/7/2026,FALSE,STREET
+9,Barcelona-Catalunya Grand Prix,Barcelona,Spain,6/12/2026,6/14/2026,FALSE,HIGH_DOWNFORCE
+10,Austrian Grand Prix,Spielberg,Austria,6/26/2026,6/28/2026,FALSE,HIGH_SPEED
+11,British Grand Prix,Silverstone,UK,7/3/2026,7/5/2026,TRUE,HIGH_SPEED
+12,Belgian Grand Prix,Spa-Francorchamps,Belgium,7/17/2026,7/19/2026,FALSE,HIGH_SPEED
+13,Hungarian Grand Prix,Budapest,Hungary,7/24/2026,7/26/2026,FALSE,HIGH_DOWNFORCE
+14,Dutch Grand Prix,Zandvoort,Netherlands,8/21/2026,8/23/2026,TRUE,BALANCED
+15,Italian Grand Prix,Monza,Italy,9/4/2026,9/6/2026,FALSE,HIGH_SPEED
+16,Spanish Grand Prix,Madrid,Spain,9/11/2026,9/13/2026,FALSE,STREET
+17,Azerbaijan Grand Prix,Baku,Azerbaijan,9/24/2026,9/26/2026,FALSE,STREET
+18,Singapore Grand Prix,Marina Bay,Singapore,10/9/2026,10/11/2026,TRUE,STREET
+19,United States Grand Prix,Austin,USA,10/23/2026,10/25/2026,FALSE,BALANCED
+20,Mexico Grand Prix,Mexico City,Mexico,10/30/2026,11/1/2026,FALSE,HIGH_DOWNFORCE
+21,Brazilian Grand Prix,Sao Paulo,Brazil,11/6/2026,11/8/2026,FALSE,BALANCED
+22,Las Vegas Grand Prix,Las Vegas,USA,11/19/2026,11/21/2026,FALSE,STREET
+23,Qatar Grand Prix,Lusail,Qatar,11/27/2026,11/29/2026,FALSE,HIGH_SPEED
+24,Abu Dhabi Grand Prix,Yas Marina,Abu Dhabi,12/4/2026,12/6/2026,FALSE,BALANCED

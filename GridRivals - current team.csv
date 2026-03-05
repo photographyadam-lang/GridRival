@@ -1,0 +1,7 @@
+type,name,code,salary_m_gbp,current_points,contract_races_remaining,contract_original_length,is_talent,notes
+DRIVER,G. Russell,MER,28.7,0,0,0,FALSE,
+DRIVER,K. Antonelli,MER,24.8,0,0,0,FALSE,
+DRIVER,C. Leclerc,FER,23.5,0,0,0,FALSE,
+DRIVER,F. Colapinto,ALP,4.7,0,0,0,FALSE,
+DRIVER,[Empty Slot],,0,0,0,0,FALSE,
+TEAM,[Empty Slot],,0,0,0,0,FALSE,

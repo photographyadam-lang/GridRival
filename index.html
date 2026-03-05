@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GridRival Optimizer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-hover);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: r;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .roster-list {
+            list-style: none;
+        }
+
+        .roster-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s ease;
+        }
+
+        .roster-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .item-type {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .type-talent {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .type-team {
+            background: rgba(167, 139, 250, 0.2);
+            color: #c4b5fd;
+        }
+
+        .type-driver {
+            background: rgba(148, 163, 184, 0.2);
+            color: #cbd5e1;
+        }
+
+        .item-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .item-details {
+            text-align: right;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .item-length {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .loading {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>GridRival Optimizer</h1>
+        <p class="subtitle">Multi-Period Portfolio Projections & Optimal Rosters</p>
+    </header>
+
+    <div class="container" id="dashboard-container">
+        <div class="loading">Loading dashboard data... Please run optimizer.py first if empty.</div>
+    </div>
+
+    <script src="dashboard_data.js"></script>
+    <script>
+        function loadDashboardData() {
+            if (typeof dashboardData !== 'undefined') {
+                renderDashboard(dashboardData);
+            } else {
+                console.error("Error fetching data");
+                document.getElementById('dashboard-container').innerHTML = `
+                    <div style="text-align:center; color: #ef4444; grid-column: 1 / -1;">
+                        <h2>Error loading data</h2>
+                        <p>Could not load <code>dashboard_data.js</code>. Make sure to run <code>python optimizer.py</code> first.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderDashboard(data) {
+            const container = document.getElementById('dashboard-container');
+            container.innerHTML = ''; // Clear loading text
+
+            data.forEach(strategy => {
+                const title = strategy.gamma > 0 ? "Salary Farming Bias" : "Raw Points Bias";
+
+                // Sort actions: TEAM first, then TALENT, then DRIVERs compiled alphabetically
+                const sortedActions = strategy.actions.sort((a, b) => {
+                    const order = { 'TEAM': 1, 'TALENT': 2, 'DRIVER': 3 };
+                    if (order[a.type] !== order[b.type]) return order[a.type] - order[b.type];
+                    return a.name.localeCompare(b.name);
+                });
+
+                let actionsHtml = '';
+                sortedActions.forEach(action => {
+                    const typeClass = `type-${action.type.toLowerCase()}`;
+                    actionsHtml += `
+                        <li class="roster-item">
+                            <div class="item-info">
+                                <span class="item-type ${typeClass}">${action.type}</span>
+                                <span class="item-name">${action.name}</span>
+                            </div>
+                            <div class="item-details">
+                                <div class="item-price">$${action.price}M</div>
+                                <div class="item-length">${action.length} Race Contract</div>
+                            </div>
+                        </li>
+                    `;
+                });
+
+                const cardHtml = `
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">${title}</h2>
+                            <span class="badge">&gamma; = ${strategy.gamma.toFixed(1)}</span>
+                        </div>
+                        
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-label">Expected Points</div>
+                                <div class="metric-value" style="color: #60a5fa">${strategy.expected_utility}</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Budget Growth</div>
+                                <div class="metric-value" style="color: #10b981">+$${strategy.budget_growth}M</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Portfolio Value</div>
+                                <div class="metric-value">$${strategy.current_pv}M</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Roster Cost</div>
+                                <div class="metric-value">$${strategy.roster_cost}M</div>
+                            </div>
+                        </div>
+
+                        <ul class="roster-list">
+                            ${actionsHtml}
+                        </ul>
+                    </div>
+                `;
+
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        // Load data on page init
+        loadDashboardData();
+    </script>
+</body>
+
+</html>

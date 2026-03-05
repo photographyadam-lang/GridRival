@@ -1,0 +1,92 @@
+[
+  {
+    "gamma": 2.0,
+    "expected_utility": 2729.9,
+    "current_pv": 100.0,
+    "roster_cost": 99.9,
+    "budget_growth": 17.3,
+    "actions": [
+      {
+        "name": "Mercedes",
+        "type": "TEAM",
+        "price": 28.5,
+        "length": 1
+      },
+      {
+        "name": "C. Leclerc",
+        "type": "DRIVER",
+        "price": 23.5,
+        "length": 1
+      },
+      {
+        "name": "L. Hamilton",
+        "type": "DRIVER",
+        "price": 20.9,
+        "length": 2
+      },
+      {
+        "name": "A. Albon",
+        "type": "DRIVER",
+        "price": 13.1,
+        "length": 2
+      },
+      {
+        "name": "O. Bearman",
+        "type": "TALENT",
+        "price": 9.2,
+        "length": 5
+      },
+      {
+        "name": "V. Bottas",
+        "type": "DRIVER",
+        "price": 4.7,
+        "length": 5
+      }
+    ]
+  },
+  {
+    "gamma": 0.0,
+    "expected_utility": 2695.3,
+    "current_pv": 100.0,
+    "roster_cost": 99.9,
+    "budget_growth": 17.0,
+    "actions": [
+      {
+        "name": "Mercedes",
+        "type": "TEAM",
+        "price": 28.5,
+        "length": 1
+      },
+      {
+        "name": "C. Leclerc",
+        "type": "DRIVER",
+        "price": 23.5,
+        "length": 1
+      },
+      {
+        "name": "L. Hamilton",
+        "type": "DRIVER",
+        "price": 20.9,
+        "length": 2
+      },
+      {
+        "name": "A. Albon",
+        "type": "DRIVER",
+        "price": 13.1,
+        "length": 2
+      },
+      {
+        "name": "O. Bearman",
+        "type": "TALENT",
+        "price": 9.2,
+        "length": 5
+      },
+      {
+        "name": "V. Bottas",
+        "type": "DRIVER",
+        "price": 4.7,
+        "length": 2
+      }
+    ]
+  }
+]
