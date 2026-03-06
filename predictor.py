@@ -45,10 +45,12 @@ def load_api_data(year, meeting_key):
 def fetch_driver_mapping(base_url, meeting_key):
     """Fetches driver data to map driver_number -> name_acronym (GridRival Code)"""
     mapping = {}
+    if not meeting_key: return mapping
     try:
         drivers = requests.get(f"{base_url}/drivers?meeting_key={meeting_key}").json()
-        for d in drivers:
-            mapping[d['driver_number']] = d['name_acronym']
+        if isinstance(drivers, list):
+            for d in drivers:
+                mapping[d.get('driver_number')] = d.get('name_acronym')
         return mapping
     except Exception as e:
         print(f"Error fetching drivers: {e}")
@@ -58,14 +60,16 @@ def fetch_laps(base_url, session_key):
     if not session_key: return []
     try:
         url = f"{base_url}/laps?session_key={session_key}"
-        return requests.get(url).json()
+        data = requests.get(url).json()
+        return data if isinstance(data, list) else []
     except: return []
 
 def fetch_positions(base_url, session_key):
     if not session_key: return []
     try:
         url = f"{base_url}/positions?session_key={session_key}"
-        return requests.get(url).json()
+        data = requests.get(url).json()
+        return data if isinstance(data, list) else []
     except: return []
 
 def load_local_data():
@@ -138,8 +142,14 @@ def score_driver(pred_finish, avg_finish, quali_pos, teammate_finish, has_sprint
     return total
 
 def fetch_active_meeting():
-    """Finds the most recent or active race meeting from OpenF1"""
+    """Finds the chronologically latest or currently active race meeting from OpenF1"""
     try:
+        # First, query the latest active session via the /sessions endpoint
+        latest_session = requests.get("https://api.openf1.org/v1/sessions?session_key=latest").json()
+        if latest_session and isinstance(latest_session, list) and len(latest_session) > 0:
+            return latest_session[0]['meeting_key'], latest_session[0]['year']
+            
+        # Fallback if specific latest fails
         year = datetime.datetime.now().year
         meetings = requests.get(f"https://api.openf1.org/v1/meetings?year={year}").json()
         if not meetings:
