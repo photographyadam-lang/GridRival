@@ -155,7 +155,10 @@ def compute_salaries(drivers_teams, e_points, start_round=4, horizon=5):
                 
     return salaries, deltas
 
-def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon=5, GAMMA=1.0):
+def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon=5, GAMMA=1.0, excluded_entities=None):
+    if excluded_entities is None:
+        excluded_entities = []
+        
     # Retrieve predictions from our new predictor module
     rounds_df = pd.read_csv(os.path.join(BASE_DIR, "GridRivals - rounds.csv")) if os.path.exists(os.path.join(BASE_DIR, "GridRivals - rounds.csv")) else pd.DataFrame()
     pred_df = calculate_e_points(drivers_teams, drivers_teams[drivers_teams['type']=='TEAM'], hist_perf, rounds_df)
@@ -249,6 +252,12 @@ def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon
                 if salaries[(e, t)] > 18.0:
                     prob += T_var[e, t] == 0, f"Talent_Salary_Cap_{e}_{t}"
                     
+    # Excluded Entities constraint
+    for e in excluded_entities:
+        if e in elements:
+            for t in rounds:
+                prob += x[e, t] == 0, f"Excluded_Constraint_{e}_{t}"
+                
     # Current Team Constraints
     if current_team is not None and not current_team.empty:
         for _, row in current_team.iterrows():

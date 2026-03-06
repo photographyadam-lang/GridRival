@@ -36,7 +36,8 @@ def fetch_latest():
 @app.route("/api/run_optimization", methods=["POST"])
 def run_optimization():
     """Run the optimizer algorithm for teams"""
-    # For now, this returns the mock JSON structure representing an optimization result
+    req_data = request.get_json(silent=True) or {}
+    excludes = req_data.get('excludes', [])
     
     drivers, teams, hist_perf, rounds = load_local_data()
     
@@ -75,7 +76,7 @@ def run_optimization():
             
             ct_df = pd.DataFrame(rows)
             # Default to balanced bias for user teams
-            r = run_optimizer(drivers_teams, hist_perf, ct_df, start_round=4, horizon=5, GAMMA=1.0)
+            r = run_optimizer(drivers_teams, hist_perf, ct_df, start_round=4, horizon=5, GAMMA=1.0, excluded_entities=excludes)
             if r and 'error' not in r:
                 r['team_id'] = t_data.get('name', f"Team {i+1}")
                 results.append(r)
@@ -85,7 +86,7 @@ def run_optimization():
         # Simulate processing 4 teams
         for i in range(4):
             # We pass empty DataFrame for current_team to simulate raw generation
-            r = run_optimizer(drivers_teams, hist_perf, pd.DataFrame(), start_round=4, horizon=5, GAMMA=gammas[i])
+            r = run_optimizer(drivers_teams, hist_perf, pd.DataFrame(), start_round=4, horizon=5, GAMMA=gammas[i], excluded_entities=excludes)
             if r and 'error' not in r:
                 # Tag the result with a team name for UI rendering
                 r['team_id'] = f"Team {i+1}"

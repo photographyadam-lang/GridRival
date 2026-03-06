@@ -1,10 +1,10 @@
 const dashboardData = [
   {
     "gamma": 2.0,
-    "expected_utility": 3439.5,
+    "expected_utility": 3430.3,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 30.9,
+    "budget_growth": 31.0,
     "actions": [
       {
         "name": "C. Leclerc",
@@ -22,7 +22,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 2
+        "length": 5
       },
       {
         "name": "E. Ocon",
@@ -47,16 +47,16 @@ const dashboardData = [
   },
   {
     "gamma": 1.0,
-    "expected_utility": 3408.6,
+    "expected_utility": 3399.3,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 30.4,
+    "budget_growth": 31.0,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 2
+        "length": 3
       },
       {
         "name": "L. Stroll",
@@ -68,7 +68,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 2
+        "length": 5
       },
       {
         "name": "E. Ocon",
@@ -93,16 +93,16 @@ const dashboardData = [
   },
   {
     "gamma": 0.5,
-    "expected_utility": 3393.4,
+    "expected_utility": 3384.1,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 30.4,
+    "budget_growth": 30.2,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 2
+        "length": 4
       },
       {
         "name": "L. Stroll",
@@ -139,16 +139,16 @@ const dashboardData = [
   },
   {
     "gamma": 0.0,
-    "expected_utility": 3378.2,
+    "expected_utility": 3369.0,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 30.4,
+    "budget_growth": 30.2,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 2
+        "length": 4
       },
       {
         "name": "L. Stroll",

@@ -297,8 +297,18 @@
         <p class="subtitle">Multi-Period Portfolio Projections & Optimal Rosters</p>
     </header>
 
-    <div class="controls">
+    <div class="controls" style="align-items: center; justify-content: center;">
         <button id="btn-fetch" onclick="fetchLatestData()">Fetch Latest F1 Data</button>
+        <div
+            style="display: flex; flex-direction: column; text-align: left; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 8px; border: 1px solid var(--card-border);">
+            <label for="exclude-selector"
+                style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.2rem;">Exclude Entities (Ctrl+Click
+                to select multiple):</label>
+            <select id="exclude-selector" multiple
+                style="background: var(--bg-main); color: var(--text-main); border: 1px solid var(--card-border); border-radius: 4px; padding: 0.2rem; min-width: 200px; height: 60px; font-family: inherit;">
+                <option value="" disabled>Loading roster...</option>
+            </select>
+        </div>
         <button id="btn-optimize" onclick="runOptimization()">Run Optimization (All Teams)</button>
         <button id="btn-validate" onclick="checkCalculations()">Check Calculations (Validate)</button>
         <button id="btn-log" onclick="toggleApiLog()"
@@ -490,8 +500,17 @@
             setButtonLoading('btn-optimize', true);
             const container = document.getElementById('dashboard-container');
             container.innerHTML = '<div class="loading">Optimizing rosters... this may take a moment.</div>';
+
+            // Extract Exclusions
+            const excludeSelect = document.getElementById('exclude-selector');
+            const excludes = Array.from(excludeSelect.selectedOptions).map(opt => opt.value);
+
             try {
-                const res = await fetch(`${API_BASE}/run_optimization`, { method: 'POST' });
+                const res = await fetch(`${API_BASE}/run_optimization`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ excludes: excludes })
+                });
                 const data = await res.json();
                 if (res.ok) {
                     renderDashboard(data.data);
@@ -589,6 +608,26 @@
 
                 container.innerHTML += cardHtml;
             });
+        }
+
+        // --- Feature: Exclusions List Setup ---
+        async function loadExclusionsList() {
+            try {
+                const res = await fetch(`${API_BASE}/get_roster`);
+                const data = await res.json();
+                if (res.ok && data.roster) {
+                    const selector = document.getElementById('exclude-selector');
+                    selector.innerHTML = ''; // Clear loading
+                    data.roster.forEach(r => {
+                        const opt = document.createElement('option');
+                        opt.value = r.name;
+                        opt.innerText = `${r.name} (${r.type})`;
+                        selector.appendChild(opt);
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to load exclusions list", e);
+            }
         }
 
         // --- Feature: API Data Viewer ---
@@ -890,6 +929,7 @@
 
         loadRaces();
         loadRoster();
+        loadExclusionsList();
     </script>
 </body>
 
