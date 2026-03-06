@@ -6,17 +6,17 @@ from optimizer import compute_salaries, run_optimizer
 def test_compute_salaries_clamping():
     drivers_teams = pd.DataFrame([
         {'name': 'Driver Fast', 'type': 'DRIVER', 'salary': 10.0, 'code': 'A1'},
-        {'name': 'Driver Slow', 'type': 'DRIVER', 'salary': 10.0, 'code': 'A1'},
-        {'name': 'Team Good', 'type': 'TEAM', 'salary': 15.0, 'code': 'A1'},
-        {'name': 'Team Bad', 'type': 'TEAM', 'salary': 15.0, 'code': 'A1'}
+        {'name': 'Driver Slow', 'type': 'DRIVER', 'salary': 45.0, 'code': 'A1'},
+        {'name': 'Team Good', 'type': 'TEAM', 'salary': 10.0, 'code': 'A1'},
+        {'name': 'Team Bad', 'type': 'TEAM', 'salary': 45.0, 'code': 'A1'}
     ])
     
     # Mock e_points to force huge salary changes
     e_points = {
-        ('Driver Fast', 1): 200.0, # Will be Rank 1 -> default ~30.0
-        ('Driver Slow', 1): 0.0,   # Will be Rank 22 -> default ~5.0
-        ('Team Good', 1): 200.0,   # Will be Rank 1 -> default ~28.0
-        ('Team Bad', 1): 0.0       # Will be Rank 11 -> default ~4.0
+        ('Driver Fast', 1): 200.0, # Rank 1 -> default 34.0
+        ('Driver Slow', 1): 0.0,   # Rank 2 -> default 32.4
+        ('Team Good', 1): 200.0,   # Rank 1 -> default 30.0
+        ('Team Bad', 1): 0.0       # Rank 2 -> default 27.4
     }
     
     salaries, deltas = compute_salaries(drivers_teams, e_points, start_round=1, horizon=1)
