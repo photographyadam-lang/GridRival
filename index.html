@@ -307,12 +307,41 @@
 
     <div id="api-log-container" class="card"
         style="display: none; margin-bottom: 2rem; border-left: 4px solid var(--accent); max-width: 1400px; width: 100%;">
-        <div class="card-header">
-            <h2 class="card-title">Live API Diagnostics Log</h2>
-            <span id="api-log-status" style="font-size: 0.9rem; color: var(--text-muted);">Loading...</span>
+        <div class="card-header" style="flex-direction: column; align-items: flex-start;">
+            <div style="display: flex; justify-content: space-between; width: 100%;">
+                <h2 class="card-title">Live API Diagnostics Log</h2>
+                <span id="api-log-status" style="font-size: 0.9rem; color: var(--text-muted);">Loading...</span>
+            </div>
+            <h3 id="api-log-subtitle"
+                style="color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; display: none;"></h3>
         </div>
-        <pre id="api-log-content"
-            style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; overflow-x: auto; color: #a78bfa; font-family: monospace;"></pre>
+        <div style="padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px; margin-bottom: 1.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                <div id="api-status-fp1"
+                    style="padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px;">FP1: Loading...
+                </div>
+                <div id="api-status-fp2"
+                    style="padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px;">FP2: Loading...
+                </div>
+                <div id="api-status-fp3"
+                    style="padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px;">FP3: Loading...
+                </div>
+            </div>
+        </div>
+        <div id="api-laps-table" style="overflow-x: auto; display: none;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; text-align: left;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--card-border);">
+                        <th style="padding: 0.75rem; color: var(--text-muted);">Driver</th>
+                        <th style="padding: 0.75rem; color: var(--text-muted);">FP1 Best Lap</th>
+                        <th style="padding: 0.75rem; color: var(--text-muted);">FP2 Best Lap</th>
+                        <th style="padding: 0.75rem; color: var(--text-muted);">FP3 Best Lap</th>
+                    </tr>
+                </thead>
+                <tbody id="api-laps-tbody">
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div id="alert-box" class="alert"></div>
@@ -377,12 +406,49 @@
                 try {
                     const res = await fetch(`${API_BASE}/get_log`);
                     const data = await res.json();
-                    if (res.ok) {
-                        document.getElementById('api-log-content').innerText = JSON.stringify(data.log, null, 2);
-                        document.getElementById('api-log-status').innerText = data.log.timestamp;
+                    if (res.ok && data.log) {
+                        const log = data.log;
+                        document.getElementById('api-log-status').innerText = `Updated: ${log.timestamp}`;
+
+                        const subtitle = document.getElementById('api-log-subtitle');
+                        if (log.meeting_name && log.location !== 'Unknown Location') {
+                            subtitle.innerText = `${log.api_year} ${log.meeting_name} - ${log.location}, ${log.country}`;
+                            subtitle.style.display = 'block';
+                        }
+
+                        document.getElementById('api-status-fp1').innerHTML = `<strong>FP1:</strong> <span style="color: ${log.sessions.FP1.includes('Success') ? 'var(--success)' : 'var(--warning)'}">${log.sessions.FP1 || "No Data"}</span>`;
+                        document.getElementById('api-status-fp2').innerHTML = `<strong>FP2:</strong> <span style="color: ${log.sessions.FP2.includes('Success') ? 'var(--success)' : 'var(--warning)'}">${log.sessions.FP2 || "No Data"}</span>`;
+                        document.getElementById('api-status-fp3').innerHTML = `<strong>FP3:</strong> <span style="color: ${log.sessions.FP3.includes('Success') ? 'var(--success)' : 'var(--warning)'}">${log.sessions.FP3 || "No Data"}</span>`;
+
+                        const tbody = document.getElementById('api-laps-tbody');
+                        const tableContainer = document.getElementById('api-laps-table');
+                        tbody.innerHTML = '';
+
+                        if (log.driver_laps && Object.keys(log.driver_laps).length > 0) {
+                            tableContainer.style.display = 'block';
+
+                            // Sort drivers alpha
+                            const sortedDrivers = Object.keys(log.driver_laps).sort();
+
+                            for (const driver of sortedDrivers) {
+                                const laps = log.driver_laps[driver];
+                                const tr = document.createElement('tr');
+                                tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+                                tr.innerHTML = `
+                                    <td style="padding: 0.75rem; font-weight: 600;">${driver}</td>
+                                    <td style="padding: 0.75rem; color: ${laps.FP1 === 'No Data' ? '#ef4444' : '#10b981'};">${laps.FP1 !== 'No Data' ? laps.FP1 + 's' : laps.FP1}</td>
+                                    <td style="padding: 0.75rem; color: ${laps.FP2 === 'No Data' ? '#ef4444' : '#10b981'};">${laps.FP2 !== 'No Data' ? laps.FP2 + 's' : laps.FP2}</td>
+                                    <td style="padding: 0.75rem; color: ${laps.FP3 === 'No Data' ? '#ef4444' : '#10b981'};">${laps.FP3 !== 'No Data' ? laps.FP3 + 's' : laps.FP3}</td>
+                                `;
+                                tbody.appendChild(tr);
+                            }
+                        } else {
+                            tableContainer.style.display = 'block';
+                            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 1rem; color: var(--text-muted);">No practice lap data extracted yet. Fetch Latest Info to query OpenF1.</td></tr>';
+                        }
                     }
                 } catch (e) {
-                    document.getElementById('api-log-content').innerText = "Error fetching API log.";
+                    document.getElementById('api-log-status').innerText = "Error fetching API log.";
                 }
             } else {
                 container.style.display = 'none';

@@ -169,17 +169,34 @@ def calculate_e_points(drivers, teams, hist_perf, rounds):
     
     fp_pace = {} # name_acronym -> avg lap time rank
     
+    # Optional: fetch meeting rich info
+    meeting_name = "Unknown Race"
+    location = "Unknown Location"
+    country = "Unknown Country"
+    try:
+        if api_data:
+            m_data = requests.get(f"https://api.openf1.org/v1/meetings?meeting_key={meeting_key}").json()
+            if m_data and isinstance(m_data, list):
+                meeting_name = m_data[0].get('meeting_name', 'Unknown Race')
+                location = m_data[0].get('location', 'Unknown Location')
+                country = m_data[0].get('country_name', 'Unknown Country')
+    except: pass
+    
     # Initialize API Diagnostics Log
     api_log = {
         "timestamp": datetime.datetime.now().isoformat(),
         "meeting_key": meeting_key,
+        "meeting_name": meeting_name,
+        "location": location,
+        "country": country,
         "api_year": api_year,
         "sessions": {
             "FP1": "No Data",
             "FP2": "No Data",
             "FP3": "No Data"
         },
-        "active_session_used": "None"
+        "active_session_used": "None",
+        "driver_laps": {}
     }
     
     if api_data:
@@ -211,6 +228,29 @@ def calculate_e_points(drivers, teams, hist_perf, rounds):
             active_session = "FP1"
             
         api_log["active_session_used"] = active_session
+        
+        # Calculate Best Laps mapped to drivers
+        def get_best_laps(laps):
+            if not laps or not isinstance(laps, list): return {}
+            df = pd.DataFrame(laps)
+            if df.empty or 'lap_duration' not in df.columns or 'driver_number' not in df.columns: return {}
+            valid = df[df['lap_duration'].between(60, 120)]
+            if valid.empty: return {}
+            return valid.groupby('driver_number')['lap_duration'].min().to_dict()
+            
+        fp1_best = get_best_laps(laps_data_fp1)
+        fp2_best = get_best_laps(laps_data_fp2)
+        fp3_best = get_best_laps(laps_data_fp3)
+        
+        driver_laps = {}
+        # We process drivers securely through the GridRival code map
+        for d_num, acronym in driver_mapping.items():
+            driver_laps[acronym] = {
+                "FP1": round(fp1_best.get(d_num, 0), 3) if fp1_best.get(d_num) else "No Data",
+                "FP2": round(fp2_best.get(d_num, 0), 3) if fp2_best.get(d_num) else "No Data",
+                "FP3": round(fp3_best.get(d_num, 0), 3) if fp3_best.get(d_num) else "No Data"
+            }
+        api_log["driver_laps"] = driver_laps
         
         # Save log file
         log_path = os.path.join(BASE_DIR, "latest_api_log.json")
