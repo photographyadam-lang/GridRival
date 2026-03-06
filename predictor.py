@@ -4,6 +4,7 @@ import re
 import os
 import datetime
 import requests
+import json
 
 # Base directory for the CSVs
 BASE_DIR = r"c:\Users\adam\OneDrive\Documents\projects\gridrival-optimizer"
@@ -15,10 +16,12 @@ def load_api_data(year, meeting_key):
     try:
         # Fetch sessions
         sessions = requests.get(f"{base_url}/sessions?year={year}&meeting_key={meeting_key}").json()
-        fp2_session_key, fp3_session_key, quali_session_key, race_session_key = None, None, None, None
+        fp1_session_key, fp2_session_key, fp3_session_key, quali_session_key, race_session_key = None, None, None, None, None
         
         for s in sessions:
-            if s['session_name'] == 'Practice 2':
+            if s['session_name'] == 'Practice 1':
+                fp1_session_key = s['session_key']
+            elif s['session_name'] == 'Practice 2':
                 fp2_session_key = s['session_key']
             elif s['session_name'] == 'Practice 3':
                 fp3_session_key = s['session_key']
@@ -28,6 +31,7 @@ def load_api_data(year, meeting_key):
                 race_session_key = s['session_key']
                 
         return {
+            'fp1': fp1_session_key,
             'fp2': fp2_session_key,
             'fp3': fp3_session_key,
             'quali': quali_session_key,
@@ -37,6 +41,18 @@ def load_api_data(year, meeting_key):
     except Exception as e:
         print(f"Error fetching from OpenF1: {e}")
         return None
+
+def fetch_driver_mapping(base_url, meeting_key):
+    """Fetches driver data to map driver_number -> name_acronym (GridRival Code)"""
+    mapping = {}
+    try:
+        drivers = requests.get(f"{base_url}/drivers?meeting_key={meeting_key}").json()
+        for d in drivers:
+            mapping[d['driver_number']] = d['name_acronym']
+        return mapping
+    except Exception as e:
+        print(f"Error fetching drivers: {e}")
+        return {}
 
 def fetch_laps(base_url, session_key):
     if not session_key: return []
@@ -139,12 +155,63 @@ def calculate_e_points(drivers, teams, hist_perf, rounds):
     # 1. Fetch live OpenF1 data to build form models
     meeting_key, api_year = fetch_active_meeting()
     api_data = load_api_data(api_year, meeting_key)
+    driver_mapping = fetch_driver_mapping(api_data['base_url'], meeting_key) if api_data else {}
     
-    fp_pace = {} # driver_number -> avg lap time
+    fp_pace = {} # name_acronym -> avg lap time rank
+    
+    # Initialize API Diagnostics Log
+    api_log = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "meeting_key": meeting_key,
+        "api_year": api_year,
+        "sessions": {
+            "FP1": "No Data",
+            "FP2": "No Data",
+            "FP3": "No Data"
+        },
+        "active_session_used": "None"
+    }
+    
     if api_data:
-        fp2_laps = fetch_laps(api_data['base_url'], api_data['fp2'])
-        if isinstance(fp2_laps, list):
-            df_laps = pd.DataFrame(fp2_laps)
+        # Hierarchical fetch: Try FP3 first, then FP2, then FP1
+        active_session = "None"
+        
+        laps_data_fp3 = fetch_laps(api_data['base_url'], api_data['fp3'])
+        if laps_data_fp3:
+            api_log["sessions"]["FP3"] = f"Success ({len(laps_data_fp3)} laps)"
+        
+        laps_data_fp2 = fetch_laps(api_data['base_url'], api_data['fp2'])
+        if laps_data_fp2:
+            api_log["sessions"]["FP2"] = f"Success ({len(laps_data_fp2)} laps)"
+            
+        laps_data_fp1 = fetch_laps(api_data['base_url'], api_data['fp1'])
+        if laps_data_fp1:
+            api_log["sessions"]["FP1"] = f"Success ({len(laps_data_fp1)} laps)"
+            
+        # Determine strict fallback
+        laps_data = []
+        if laps_data_fp3: 
+            laps_data = laps_data_fp3
+            active_session = "FP3"
+        elif laps_data_fp2:
+            laps_data = laps_data_fp2
+            active_session = "FP2"
+        elif laps_data_fp1:
+            laps_data = laps_data_fp1
+            active_session = "FP1"
+            
+        api_log["active_session_used"] = active_session
+        
+        # Save log file
+        log_path = os.path.join(BASE_DIR, "latest_api_log.json")
+        try:
+            with open(log_path, 'w') as f:
+                json.dump(api_log, f, indent=4)
+        except Exception as e:
+            print(f"Error saving API log: {e}")
+
+        if isinstance(laps_data, list):
+            df_laps = pd.DataFrame(laps_data)
         else:
             df_laps = pd.DataFrame()
         
@@ -153,9 +220,11 @@ def calculate_e_points(drivers, teams, hist_perf, rounds):
             valid_laps = df_laps[(df_laps['lap_duration'] > 60) & (df_laps['lap_duration'] < 120)]
             medians = valid_laps.groupby('driver_number')['lap_duration'].median().sort_values()
             
-            # Map position ranks
+            # Map position ranks using the driver acronym
             for rank, (d_num, duration) in enumerate(medians.items(), start=1):
-                fp_pace[d_num] = rank
+                acronym = driver_mapping.get(d_num)
+                if acronym:
+                    fp_pace[acronym] = rank
     
     team_salaries = dict(zip(teams['code'], teams['salary']))
     max_team_salary = max(team_salaries.values()) if team_salaries else 1.0
@@ -176,9 +245,8 @@ def calculate_e_points(drivers, teams, hist_perf, rounds):
     for _, driver_row in drivers.iterrows():
         driver = driver_row['name']
         team_code = driver_row['code']
-        # Map back to car number (rough hack, usually number is in code or known, defaulting to 15 rank if not found)
-        # In a full app, we map names to `driver_number` via OpenF1 /drivers endpoint
-        fp_rank = 15 # default
+        # Extract practice rank dynamically using the matched acronym (team_code)
+        fp_rank = fp_pace.get(team_code, 15)
         
         # Historical Support multi-year exponential smoothing
         if not hist_perf.empty:

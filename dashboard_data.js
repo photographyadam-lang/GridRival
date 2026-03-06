@@ -1,10 +1,10 @@
 const dashboardData = [
   {
     "gamma": 2.0,
-    "expected_utility": 3454.4,
+    "expected_utility": 3439.5,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 31.0,
+    "budget_growth": 30.9,
     "actions": [
       {
         "name": "C. Leclerc",
@@ -22,7 +22,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 5
+        "length": 2
       },
       {
         "name": "E. Ocon",
@@ -47,16 +47,16 @@ const dashboardData = [
   },
   {
     "gamma": 1.0,
-    "expected_utility": 3423.4,
+    "expected_utility": 3408.6,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 31.0,
+    "budget_growth": 30.4,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 3
+        "length": 2
       },
       {
         "name": "L. Stroll",
@@ -68,7 +68,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 5
+        "length": 2
       },
       {
         "name": "E. Ocon",
@@ -93,16 +93,16 @@ const dashboardData = [
   },
   {
     "gamma": 0.5,
-    "expected_utility": 3407.9,
+    "expected_utility": 3393.4,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 31.0,
+    "budget_growth": 30.4,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 3
+        "length": 2
       },
       {
         "name": "L. Stroll",
@@ -114,7 +114,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 5
+        "length": 2
       },
       {
         "name": "E. Ocon",
@@ -139,16 +139,16 @@ const dashboardData = [
   },
   {
     "gamma": 0.0,
-    "expected_utility": 3392.4,
+    "expected_utility": 3378.2,
     "current_pv": 100.0,
     "roster_cost": 97.3,
-    "budget_growth": 31.0,
+    "budget_growth": 30.4,
     "actions": [
       {
         "name": "C. Leclerc",
         "type": "DRIVER",
         "price": 23.5,
-        "length": 3
+        "length": 2
       },
       {
         "name": "L. Stroll",
@@ -160,7 +160,7 @@ const dashboardData = [
         "name": "C. Sainz Jr",
         "type": "DRIVER",
         "price": 15.7,
-        "length": 5
+        "length": 2
       },
       {
         "name": "E. Ocon",

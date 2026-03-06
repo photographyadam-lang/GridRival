@@ -31,15 +31,14 @@ def test_compute_salaries_clamping():
 
 def test_compute_salaries_rounding():
     drivers_teams = pd.DataFrame([
-        {'name': 'Driver Normal', 'type': 'DRIVER', 'salary': 15.0, 'code': 'A1'}
+        {'name': 'Driver Normal', 'type': 'DRIVER', 'salary': 33.5, 'code': 'A1'}
     ])
     
-    # Force a specific rank. Rank 15 default is ~15.5
-    # Let's say Rank 15 -> 15.5
+    # Since they are the only driver, rank=1 -> default salary is 34.0
     e_points = {('Driver Normal', 1): 50.0}
     salaries, deltas = compute_salaries(drivers_teams, e_points, start_round=1, horizon=1)
     
-    # default 15.5 - 15.0 = 0.5 diff. Divided by 4 = 0.125
+    # default 34.0 - 33.5 = +0.5 diff. Divided by 4 = 0.125
     # GridRival rule: Round down to nearest 0.1 -> 0.1
     assert deltas[('Driver Normal', 1)] == 0.1
 

@@ -149,6 +149,27 @@ def get_race_data(round_id):
     # Send empty array if missing
     return jsonify({"status": "success", "data": round_data.to_dict('records')})
 
+@app.route("/api/get_log", methods=["GET"])
+def get_log():
+    """Returns the API connection log diagnostics"""
+    log_path = os.path.join(BASE_DIR, "latest_api_log.json")
+    if os.path.exists(log_path):
+        with open(log_path, 'r') as f:
+            data = json.load(f)
+        return jsonify({"status": "success", "log": data})
+    else:
+        return jsonify({"status": "success", "log": {
+            "timestamp": "N/A",
+            "meeting_key": "N/A",
+            "api_year": "N/A",
+            "active_session_used": "None",
+            "sessions": {
+                "FP1": "No Data (Run Fetch Latest Info)",
+                "FP2": "No Data",
+                "FP3": "No Data"
+            }
+        }})
+
 @app.route("/api/save_teams", methods=["POST"])
 def save_teams():
     data = request.json

@@ -64,7 +64,11 @@ def test_score_driver_sprint_bad():
     score = score_driver(pred_finish=1.0, avg_finish=1.0, quali_pos=1.0, teammate_finish=2.0, has_sprint=True, avg_sprint_finish=11.0)
     assert score == 105.0
 
-def test_calculate_e_points_weighting():
+from unittest.mock import patch
+
+@patch('predictor.load_api_data')
+def test_calculate_e_points_weighting(mock_load):
+    mock_load.return_value = None
     # Mock data to verify exponential weighting works
     drivers = pd.DataFrame([
         {'name': 'Driver A', 'code': 'A1', 'type': 'DRIVER'},

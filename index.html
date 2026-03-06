@@ -301,6 +301,18 @@
         <button id="btn-fetch" onclick="fetchLatestData()">Fetch Latest F1 Data</button>
         <button id="btn-optimize" onclick="runOptimization()">Run Optimization (All Teams)</button>
         <button id="btn-validate" onclick="checkCalculations()">Check Calculations (Validate)</button>
+        <button id="btn-log" onclick="toggleApiLog()"
+            style="background-color: var(--card-bg); border: 1px solid var(--card-border);">Show API Log</button>
+    </div>
+
+    <div id="api-log-container" class="card"
+        style="display: none; margin-bottom: 2rem; border-left: 4px solid var(--accent); max-width: 1400px; width: 100%;">
+        <div class="card-header">
+            <h2 class="card-title">Live API Diagnostics Log</h2>
+            <span id="api-log-status" style="font-size: 0.9rem; color: var(--text-muted);">Loading...</span>
+        </div>
+        <pre id="api-log-content"
+            style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 4px; overflow-x: auto; color: #a78bfa; font-family: monospace;"></pre>
     </div>
 
     <div id="alert-box" class="alert"></div>
@@ -355,6 +367,28 @@
 
     <script>
         const API_BASE = "http://127.0.0.1:5000/api";
+
+        async function toggleApiLog() {
+            const container = document.getElementById('api-log-container');
+            const btn = document.getElementById('btn-log');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                btn.innerText = 'Hide API Log';
+                try {
+                    const res = await fetch(`${API_BASE}/get_log`);
+                    const data = await res.json();
+                    if (res.ok) {
+                        document.getElementById('api-log-content').innerText = JSON.stringify(data.log, null, 2);
+                        document.getElementById('api-log-status').innerText = data.log.timestamp;
+                    }
+                } catch (e) {
+                    document.getElementById('api-log-content').innerText = "Error fetching API log.";
+                }
+            } else {
+                container.style.display = 'none';
+                btn.innerText = 'Show API Log';
+            }
+        }
 
         function showAlert(msg, isError = false) {
             const box = document.getElementById('alert-box');
