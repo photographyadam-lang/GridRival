@@ -1,89 +1,744 @@
-round,race_name,driver_name,team_code,race_finish_or_range,quali_position_or_range,notes
-1,"""Australian GP""",M. Verstappen,RBR,1,3,"""Won from P3, strong race pace"""
-1,"""Australian GP""",L. Norris,MCL,3,1,"""Pole position, finished P3"""
-1,"""Australian GP""",G. Russell,MER,2,4,"""Strong performance P2"""
-1,"""Australian GP""",K. Antonelli,MER,4,DNF Q1,"""Early elimination in quali, finished P4"""
-1,"""Australian GP""",O. Piastri,MCL,DNF,2,"""Pole front row, DNF in race"""
-1,"""Australian GP""",C. Leclerc,FER,7,7,"""Consistent mid-pack"""
-1,"""Australian GP""",L. Hamilton,FER,8,8,"""Mid-pack performance"""
-1,"""Australian GP""",F. Alonso,AMR,5,5,"""Solid top-5 qualifying"""
-1,"""Australian GP""",I. Hadjar,RBS,6,6,"""Points finish from P6"""
-1,"""Australian GP""",P. Gasly,ALP,9,9,"""Q3 appearance"""
-1,"""Australian GP""",F. Colapinto,ALP,15,15,"""Lower midfield"""
-2,"""Chinese GP""",O. Piastri,MCL,1,2,"""Won race from P2 quali"""
-2,"""Chinese GP""",L. Norris,MCL,2,1,"""Pole position, P2 finish"""
-2,"""Chinese GP""",G. Russell,MER,3,3,"""Podium finish, consistent"""
-2,"""Chinese GP""",M. Verstappen,RBR,4,4,"""Sprint podium (P3), solid race"""
-2,"""Chinese GP""",K. Antonelli,MER,5,5,"""Points finish"""
-2,"""Chinese GP""",C. Leclerc,FER,6,6,"""Mid-pack"""
-2,"""Chinese GP""",L. Hamilton,FER,Sprint Win,Sprint P1,"""Won sprint race, pole position"""
-2,"""Chinese GP""",F. Alonso,AMR,10,10,"""Outside points"""
-2,"""Chinese GP""",I. Hadjar,RBS,12,12,"""Lower midfield"""
-2,"""Chinese GP""",P. Gasly,ALP,14,14,"""Lower midfield"""
-2,"""Chinese GP""",F. Colapinto,ALP,16,16,"""Back of field"""
-3,"""Japanese GP""",M. Verstappen,RBR,1,1,"""Pole and win, dominant"""
-3,"""Japanese GP""",L. Norris,MCL,2,2,"""P2 quali and finish"""
-3,"""Japanese GP""",O. Piastri,MCL,3,3,"""Podium from P3"""
-3,"""Japanese GP""",C. Leclerc,FER,4,4,"""Best of rest P4"""
-3,"""Japanese GP""",G. Russell,MER,5,5,"""Solid points"""
-3,"""Japanese GP""",K. Antonelli,MER,6,6,"""Points finish"""
-3,"""Japanese GP""",L. Hamilton,FER,7,7,"""Points finish"""
-3,"""Japanese GP""",I. Hadjar,RBS,8,8,"""Points finish, improving"""
-3,"""Japanese GP""",A. Albon,WIL,9,9,"""Single point"""
-3,"""Japanese GP""",O. Bearman,HAS,10,10,"""Final point"""
-3,"""Japanese GP""",F. Alonso,AMR,11,11,"""Outside points"""
-3,"""Japanese GP""",P. Gasly,ALP,13,13,"""Lower midfield"""
-3,"""Japanese GP""",C. Sainz Jr,WIL,14,14,"""Lower midfield"""
-3,"""Japanese GP""",F. Colapinto,ALP,18,18,"""Back markers"""
-4,"""Bahrain GP""",M. Verstappen,RBR,1-3,1-3,"""Historically strong, expect front row"""
-4,"""Bahrain GP""",L. Norris,MCL,2-4,2-4,"""McLaren competitive here"""
-4,"""Bahrain GP""",O. Piastri,MCL,3-5,3-5,"""McLaren pace strong"""
-4,"""Bahrain GP""",G. Russell,MER,4-6,4-6,"""Mercedes solid"""
-4,"""Bahrain GP""",C. Leclerc,FER,5-7,5-7,"""Ferrari mid-pack"""
-4,"""Bahrain GP""",L. Hamilton,FER,6-8,6-8,"""Ferrari pace developing"""
-4,"""Bahrain GP""",K. Antonelli,MER,6-9,6-9,"""Points likely"""
-4,"""Bahrain GP""",F. Alonso,AMR,8-12,8-12,"""Midfield battle"""
-4,"""Bahrain GP""",I. Hadjar,RBS,10-14,10-14,"""Lower points"""
-4,"""Bahrain GP""",C. Sainz Jr,WIL,10-15,10-15,"""Williams pace limited"""
-4,"""Bahrain GP""",A. Albon,WIL,10-15,10-15,"""Williams pace limited"""
-4,"""Bahrain GP""",P. Gasly,ALP,12-16,12-16,"""Alpine struggling"""
-4,"""Bahrain GP""",F. Colapinto,ALP,15-20,15-20,"""Back markers"""
-5,"""Saudi Arabian GP""",M. Verstappen,RBR,1-3,1-3,"""Strong at street circuits"""
-5,"""Saudi Arabian GP""",L. Norris,MCL,2-4,2-4,"""McLaren competitive"""
-5,"""Saudi Arabian GP""",O. Piastri,MCL,3-5,3-5,"""Good street circuit racer"""
-5,"""Saudi Arabian GP""",C. Leclerc,FER,4-6,4-6,"""Leclerc excels at street circuits"""
-5,"""Saudi Arabian GP""",G. Russell,MER,5-7,5-7,"""Solid performance expected"""
-5,"""Saudi Arabian GP""",K. Antonelli,MER,6-9,6-9,"""Points contention"""
-5,"""Saudi Arabian GP""",L. Hamilton,FER,6-8,6-8,"""Experience advantage"""
-5,"""Saudi Arabian GP""",F. Alonso,AMR,8-12,8-12,"""Veteran street racer"""
-5,"""Saudi Arabian GP""",I. Hadjar,RBS,10-14,10-14,"""Learning street circuits"""
-5,"""Saudi Arabian GP""",C. Sainz Jr,WIL,11-15,11-15,"""Midfield"""
-5,"""Saudi Arabian GP""",A. Albon,WIL,10-15,10-15,"""Consistent Williams"""
-5,"""Saudi Arabian GP""",P. Gasly,ALP,12-16,12-16,"""Struggling for pace"""
-5,"""Saudi Arabian GP""",F. Colapinto,ALP,15-20,15-20,"""Back markers"""
-6,"""Miami GP""",M. Verstappen,RBR,1-3,1-3,"""Sprint opportunity, strong here"""
-6,"""Miami GP""",L. Norris,MCL,2-4,2-4,"""McLaren fast in Miami"""
-6,"""Miami GP""",O. Piastri,MCL,3-5,3-5,"""Sprint podium possible"""
-6,"""Miami GP""",C. Leclerc,FER,4-6,4-6,"""Street circuit specialist"""
-6,"""Miami GP""",G. Russell,MER,5-7,5-7,"""Consistent points"""
-6,"""Miami GP""",K. Antonelli,MER,6-9,6-9,"""Points in both sessions"""
-6,"""Miami GP""",L. Hamilton,FER,6-8,6-8,"""Experience at Miami"""
-6,"""Miami GP""",F. Alonso,AMR,8-12,8-12,"""Sprint strategy play"""
-6,"""Miami GP""",I. Hadjar,RBS,10-14,10-14,"""Midfield battle"""
-6,"""Miami GP""",C. Sainz Jr,WIL,11-15,11-15,"""Williams pace limited"""
-6,"""Miami GP""",A. Albon,WIL,10-15,10-15,"""Points possible"""
-6,"""Miami GP""",P. Gasly,ALP,12-16,12-16,"""Tough weekend likely"""
-6,"""Miami GP""",F. Colapinto,ALP,15-20,15-20,"""Back of grid"""
-7,"""Canadian GP""",M. Verstappen,RBR,1-4,1-4,"""Sprint opportunity, variable weather"""
-7,"""Canadian GP""",L. Norris,MCL,2-5,2-5,"""McLaren strong in Canada"""
-7,"""Canadian GP""",O. Piastri,MCL,3-6,3-6,"""Sprint strategy important"""
-7,"""Canadian GP""",G. Russell,MER,4-7,4-7,"""Mercedes competitive here"""
-7,"""Canadian GP""",C. Leclerc,FER,5-8,5-8,"""Street circuit advantage"""
-7,"""Canadian GP""",K. Antonelli,MER,6-10,6-10,"""Points likely both sessions"""
-7,"""Canadian GP""",L. Hamilton,FER,6-9,6-9,"""Multiple Montreal winner"""
-7,"""Canadian GP""",F. Alonso,AMR,8-12,8-12,"""Experienced at Montreal"""
-7,"""Canadian GP""",I. Hadjar,RBS,10-15,10-15,"""Midfield scrap"""
-7,"""Canadian GP""",C. Sainz Jr,WIL,11-16,11-16,"""Williams pace improving"""
-7,"""Canadian GP""",A. Albon,WIL,10-15,10-15,"""Points contention"""
-7,"""Canadian GP""",P. Gasly,ALP,12-16,12-16,"""Tough for Alpine"""
-7,"""Canadian GP""",F. Colapinto,ALP,15-20,15-20,"""Back markers"""
+year,round,race_name,is_sprint_weekend,driver_name,team_code,quali_position,race_finish,sprint_quali_position,sprint_finish,notes
+2023,0,Madrid GP,No,N/A,N/A,N/A,N/A,,,Race not on 2023 calendar - new circuit debuts in 2026
+2023,1,Bahrain GP,No,C. Leclerc,FER,2,DNF,,,DNF from P2
+2023,1,Bahrain GP,No,C. Sainz Jr,FER,4,4,,,Ferrari P4
+2023,1,Bahrain GP,No,F. Alonso,AMR,5,3,,,Brilliant Alonso podium
+2023,1,Bahrain GP,No,G. Russell,MER,9,7,,,Difficult Mercedes start
+2023,1,Bahrain GP,No,L. Hamilton,MER,6,5,,,Better than Russell
+2023,1,Bahrain GP,No,L. Norris,MCL,13,17,,,Difficult McLaren start
+2023,1,Bahrain GP,No,L. Stroll,AMR,18,6,,,Aston Martin points
+2023,1,Bahrain GP,No,M. Verstappen,RBR,1,1,,,Dominant Red Bull 1-2
+2023,1,Bahrain GP,No,O. Piastri,MCL,11,8,,,Points on debut
+2023,1,Bahrain GP,No,S. Perez,RBR,3,2,,,Solid 1-2
+2023,2,Saudi Arabian GP,No,C. Leclerc,FER,3,4,,,Ferrari P4
+2023,2,Saudi Arabian GP,No,C. Sainz Jr,FER,5,5,,,Consistent Ferrari
+2023,2,Saudi Arabian GP,No,F. Alonso,AMR,4,3,,,Second consecutive podium
+2023,2,Saudi Arabian GP,No,G. Russell,MER,10,8,,,Difficult weekend
+2023,2,Saudi Arabian GP,No,L. Hamilton,MER,8,6,,,Mercedes points
+2023,2,Saudi Arabian GP,No,L. Norris,MCL,14,18,,,Struggling McLaren
+2023,2,Saudi Arabian GP,No,M. Verstappen,RBR,1,2,,,Pole but P2
+2023,2,Saudi Arabian GP,No,O. Piastri,MCL,12,9,,,Midfield
+2023,2,Saudi Arabian GP,No,S. Perez,RBR,2,1,,,Perez takes Saudi win
+2023,3,Australian GP,No,C. Leclerc,FER,5,DNF,,,DNF
+2023,3,Australian GP,No,C. Sainz Jr,FER,6,DNF,,,DNF
+2023,3,Australian GP,No,F. Alonso,AMR,4,3,,,Third consecutive podium
+2023,3,Australian GP,No,G. Russell,MER,7,5,,,Points
+2023,3,Australian GP,No,L. Hamilton,MER,3,2,,,Hamilton P2
+2023,3,Australian GP,No,L. Norris,MCL,9,7,,,Improving McLaren
+2023,3,Australian GP,No,M. Verstappen,RBR,2,1,,,Recovery win after SC
+2023,3,Australian GP,No,O. Piastri,MCL,11,12,,,Midfield
+2023,3,Australian GP,No,S. Perez,RBR,1,DNF,,,"Pole, DNF"
+2023,4,Japanese GP,No,C. Leclerc,FER,3,4,,,Ferrari consistent
+2023,4,Japanese GP,No,C. Sainz Jr,FER,4,3,,,Ferrari P3
+2023,4,Japanese GP,No,F. Alonso,AMR,8,7,,,Solid points
+2023,4,Japanese GP,No,G. Russell,MER,7,6,,,P6 Russell
+2023,4,Japanese GP,No,L. Hamilton,MER,5,5,,,Mercedes P5
+2023,4,Japanese GP,No,L. Norris,MCL,10,10,,,McLaren still developing
+2023,4,Japanese GP,No,M. Verstappen,RBR,1,1,,,Dominant Suzuka win
+2023,4,Japanese GP,No,O. Piastri,MCL,11,11,,,Points just missed
+2023,4,Japanese GP,No,S. Perez,RBR,2,2,,,RBR 1-2 again
+2023,5,Miami GP,No,C. Leclerc,FER,3,6,3,5,Ferrari P6; sprint P5
+2023,5,Miami GP,No,C. Sainz Jr,FER,5,3,5,3,Ferrari P3; sprint P3
+2023,5,Miami GP,No,F. Alonso,AMR,2,2,2,2,Alonso P2 race and sprint
+2023,5,Miami GP,No,G. Russell,MER,10,8,10,7,Tough Mercedes; sprint P7
+2023,5,Miami GP,No,L. Hamilton,MER,4,7,6,6,Hamilton P7; sprint P6
+2023,5,Miami GP,No,L. Norris,MCL,12,8,12,8,Midfield McLaren
+2023,5,Miami GP,No,M. Verstappen,RBR,9,1,4,1,Won from back after Q issue; sprint win from P4
+2023,5,Chinese GP,No,N/A,N/A,N/A,N/A,,,Race not held in 2023 - Chinese GP returned to calendar in 2024
+2023,5,Miami GP,No,O. Piastri,MCL,13,12,13,9,Outside points
+2023,5,Miami GP,No,S. Perez,RBR,1,5,1,4,Sprint pole; sprint P4; race P5
+2023,6,Monaco GP,No,C. Leclerc,FER,5,6,,,Home GP disappointment
+2023,6,Monaco GP,No,C. Sainz Jr,FER,1,4,,,"Pole, lost lead in pits"
+2023,6,Monaco GP,No,E. Ocon,ALP,2,3,,,Surprise podium for Alpine
+2023,6,Monaco GP,No,F. Alonso,AMR,3,2,,,"Alonso P2, strategy"
+2023,6,Monaco GP,No,G. Russell,MER,4,5,,,Mercedes P5
+2023,6,Monaco GP,No,L. Hamilton,MER,7,8,,,Difficult weekend
+2023,6,Monaco GP,No,L. Norris,MCL,11,12,,,Monaco tough for McLaren
+2023,6,Monaco GP,No,M. Verstappen,RBR,6,1,,,Dominant from midfield start
+2023,6,Monaco GP,No,O. Piastri,MCL,13,14,,,Learning Monaco
+2023,7,Canadian GP,No,C. Leclerc,FER,5,5,,,Ferrari solid
+2023,7,Canadian GP,No,C. Sainz Jr,FER,3,3,,,Ferrari P3
+2023,7,Canadian GP,No,F. Alonso,AMR,2,2,,,Alonso P2 at Montreal
+2023,7,Canadian GP,No,G. Russell,MER,7,8,,,P8 Russell
+2023,7,Canadian GP,No,L. Hamilton,MER,4,4,,,Strong Hamilton
+2023,7,Canadian GP,No,L. Norris,MCL,6,4,,,McLaren breakthrough
+2023,7,Canadian GP,No,M. Verstappen,RBR,1,1,,,Dominant win
+2023,7,Canadian GP,No,O. Piastri,MCL,10,9,,,Outside points
+2023,7,Canadian GP,No,S. Perez,RBR,9,6,,,Off Verstappen pace
+2023,9,Barcelona-Catalunya GP,No,C. Leclerc,FER,6,6,,,Ferrari P6
+2023,9,Barcelona-Catalunya GP,No,C. Sainz Jr,FER,3,4,,,Ferrari P4
+2023,9,Barcelona-Catalunya GP,No,F. Alonso,AMR,7,7,,,Points
+2023,9,Barcelona-Catalunya GP,No,G. Russell,MER,2,3,,,Mercedes 2-3
+2023,9,Barcelona-Catalunya GP,No,L. Hamilton,MER,4,2,,,Hamilton P2
+2023,9,Barcelona-Catalunya GP,No,L. Norris,MCL,8,8,,,MCL improving
+2023,9,Barcelona-Catalunya GP,No,M. Verstappen,RBR,1,1,,,Dominant win
+2023,9,Barcelona-Catalunya GP,No,O. Piastri,MCL,9,9,,,McLaren building
+2023,9,Barcelona-Catalunya GP,No,S. Perez,RBR,5,5,,,RBR P5
+2023,10,Austrian GP,Yes,C. Leclerc,FER,3,2,2,2,Ferrari P2; sprint P2
+2023,10,Austrian GP,Yes,C. Sainz Jr,FER,4,3,4,3,Ferrari 2-3; sprint P3
+2023,10,Austrian GP,Yes,F. Alonso,AMR,7,7,7,7,Points
+2023,10,Austrian GP,Yes,G. Russell,MER,2,6,3,6,P6 Russell
+2023,10,Austrian GP,Yes,L. Hamilton,MER,5,5,6,5,Mercedes P5
+2023,10,Austrian GP,Yes,L. Norris,MCL,6,4,5,4,MCL breakthrough; sprint P4
+2023,10,Austrian GP,Yes,M. Verstappen,RBR,1,1,1,1,Home race dominance; sprint win
+2023,10,Austrian GP,Yes,O. Piastri,MCL,9,9,9,9,MCL improving
+2023,10,Austrian GP,Yes,S. Perez,RBR,8,8,8,8,Off Verstappen pace
+2023,11,British GP,No,C. Leclerc,FER,6,6,,,Ferrari P6
+2023,11,British GP,No,C. Sainz Jr,FER,1,4,,,"Pole, fell back"
+2023,11,British GP,No,F. Alonso,AMR,8,8,,,Points
+2023,11,British GP,No,G. Russell,MER,2,9,,,"Grid pen, P9 finish"
+2023,11,British GP,No,L. Hamilton,MER,4,3,,,Hamilton P3 at home
+2023,11,British GP,No,L. Norris,MCL,3,2,,,Brilliant Norris P2
+2023,11,British GP,No,M. Verstappen,RBR,5,1,,,Win from midfield start
+2023,11,British GP,No,O. Piastri,MCL,9,7,,,McLaren double points
+2023,11,British GP,No,S. Perez,RBR,7,5,,,P5 Perez
+2023,12,Hungarian GP,No,C. Leclerc,FER,7,3,,,Ferrari P3
+2023,12,Hungarian GP,No,C. Sainz Jr,FER,1,5,,,"Pole, fell to P5"
+2023,12,Hungarian GP,No,F. Alonso,AMR,6,7,,,Points
+2023,12,Hungarian GP,No,G. Russell,MER,4,6,,,Mercedes P6
+2023,12,Hungarian GP,No,L. Hamilton,MER,3,2,,,Strong Hamilton
+2023,12,Hungarian GP,No,L. Norris,MCL,8,8,,,MCL gaining pace
+2023,12,Hungarian GP,No,M. Verstappen,RBR,5,1,,,Win from P5 grid
+2023,12,Hungarian GP,No,O. Piastri,MCL,10,9,,,Points
+2023,12,Hungarian GP,No,S. Perez,RBR,2,4,,,P4 Perez
+2023,13,Belgian GP,Yes,C. Leclerc,FER,1,4,2,4,"Pole, dropped; sprint P4"
+2023,13,Belgian GP,Yes,C. Sainz Jr,FER,5,3,4,3,Ferrari P3; sprint P3
+2023,13,Belgian GP,Yes,F. Alonso,AMR,7,9,6,9,Points
+2023,13,Belgian GP,Yes,G. Russell,MER,2,6,5,6,P6 Russell
+2023,13,Belgian GP,Yes,L. Hamilton,MER,9,5,8,5,P5 Hamilton
+2023,13,Belgian GP,Yes,L. Norris,MCL,8,7,7,7,MCL improving
+2023,13,Belgian GP,Yes,M. Verstappen,RBR,6,1,1,1,Win from P6; sprint win
+2023,13,Belgian GP,Yes,O. Piastri,MCL,10,8,9,8,Points
+2023,13,Belgian GP,Yes,S. Perez,RBR,3,2,3,2,RBR 1-2; sprint P2
+2023,14,Dutch GP,No,C. Leclerc,FER,3,3,,,Ferrari P3
+2023,14,Dutch GP,No,C. Sainz Jr,FER,2,4,,,Ferrari 3-4
+2023,14,Dutch GP,No,F. Alonso,AMR,4,2,,,Brilliant Alonso P2
+2023,14,Dutch GP,No,G. Russell,MER,7,6,,,P6
+2023,14,Dutch GP,No,L. Hamilton,MER,6,7,,,P7
+2023,14,Dutch GP,No,L. Norris,MCL,9,8,,,McLaren P8
+2023,14,Dutch GP,No,M. Verstappen,RBR,1,1,,,Home win dominance
+2023,14,Dutch GP,No,O. Piastri,MCL,10,9,,,Points
+2023,14,Dutch GP,No,S. Perez,RBR,5,5,,,P5 Perez
+2023,15,Italian GP,No,C. Leclerc,FER,3,3,,,Ferrari 2-3
+2023,15,Italian GP,No,C. Sainz Jr,FER,5,2,,,Ferrari P2 at Monza
+2023,15,Italian GP,No,F. Alonso,AMR,7,9,,,Points
+2023,15,Italian GP,No,G. Russell,MER,2,4,,,P4 Russell
+2023,15,Italian GP,No,L. Hamilton,MER,4,5,,,P5 Hamilton
+2023,15,Italian GP,No,L. Norris,MCL,8,6,,,McLaren good at Monza
+2023,15,Italian GP,No,M. Verstappen,RBR,1,1,,,Record 10th consecutive win
+2023,15,Italian GP,No,O. Piastri,MCL,9,7,,,Points
+2023,15,Italian GP,No,S. Perez,RBR,6,8,,,P8
+2023,16,Azerbaijan GP,Yes,C. Leclerc,FER,4,4,4,4,Ferrari 3-4
+2023,16,Azerbaijan GP,Yes,C. Sainz Jr,FER,2,3,2,3,Ferrari P3; sprint P3
+2023,16,Azerbaijan GP,Yes,F. Alonso,AMR,9,7,9,7,Points
+2023,16,Azerbaijan GP,Yes,G. Russell,MER,5,5,5,5,Mercedes P5
+2023,16,Azerbaijan GP,Yes,L. Hamilton,MER,6,6,6,6,P6
+2023,16,Azerbaijan GP,Yes,L. Norris,MCL,7,8,7,8,McLaren improving
+2023,16,Azerbaijan GP,Yes,M. Verstappen,RBR,3,2,3,2,RBR 1-2; sprint P2
+2023,16,Azerbaijan GP,Yes,O. Piastri,MCL,8,9,8,9,Points
+2023,16,Azerbaijan GP,Yes,S. Perez,RBR,1,1,1,1,Perez pole and win; sprint win
+2023,17,Singapore GP,No,C. Leclerc,FER,3,5,,,P5 Leclerc
+2023,17,Singapore GP,No,C. Sainz Jr,FER,1,1,,,Rare Verstappen-less win for Sainz
+2023,17,Singapore GP,No,F. Alonso,AMR,7,7,,,Points
+2023,17,Singapore GP,No,G. Russell,MER,6,8,,,Difficult Mercedes
+2023,17,Singapore GP,No,L. Hamilton,MER,5,3,,,Hamilton podium
+2023,17,Singapore GP,No,L. Norris,MCL,4,2,,,McLaren P2
+2023,17,Singapore GP,No,M. Verstappen,RBR,8,5,,,RBR off-pace in Singapore
+2023,17,Singapore GP,No,O. Piastri,MCL,10,6,,,McLaren double points
+2023,17,Singapore GP,No,S. Perez,RBR,2,8,,,Off pace
+2023,19,United States GP,Yes,C. Leclerc,FER,5,6,4,6,Ferrari P6
+2023,19,United States GP,Yes,C. Sainz Jr,FER,4,2,3,2,Ferrari P2; sprint P2
+2023,19,United States GP,Yes,F. Alonso,AMR,10,9,10,9,Points
+2023,19,United States GP,Yes,G. Russell,MER,3,8,6,8,P8 Russell
+2023,19,United States GP,Yes,L. Hamilton,MER,1,1,2,1,Hamilton COTA win; sprint win
+2023,19,United States GP,Yes,L. Norris,MCL,8,4,7,4,McLaren P4
+2023,19,United States GP,Yes,M. Verstappen,RBR,6,3,1,3,P3 despite penalty; sprint pole
+2023,19,United States GP,Yes,O. Piastri,MCL,9,7,8,7,Points
+2023,19,United States GP,Yes,S. Perez,RBR,2,5,5,5,P5
+2023,20,Mexico City GP,No,C. Leclerc,FER,1,3,,,Pole but P3
+2023,20,Mexico City GP,No,C. Sainz Jr,FER,4,5,,,Ferrari P5
+2023,20,Mexico City GP,No,F. Alonso,AMR,8,9,,,Points
+2023,20,Mexico City GP,No,G. Russell,MER,6,7,,,P7
+2023,20,Mexico City GP,No,L. Hamilton,MER,2,2,,,Hamilton P2
+2023,20,Mexico City GP,No,L. Norris,MCL,7,8,,,McLaren P8
+2023,20,Mexico City GP,No,M. Verstappen,RBR,3,1,,,Dominant altitude win
+2023,20,Mexico City GP,No,O. Piastri,MCL,9,10,,,Last point
+2023,20,Mexico City GP,No,S. Perez,RBR,5,4,,,P4 at home race
+2023,21,São Paulo GP,Yes,C. Leclerc,FER,7,8,8,8,Ferrari P8
+2023,21,São Paulo GP,Yes,C. Sainz Jr,FER,1,7,7,7,"Pole, fell to P7"
+2023,21,São Paulo GP,Yes,F. Alonso,AMR,4,3,3,3,Podium for Alonso; sprint P3
+2023,21,São Paulo GP,Yes,G. Russell,MER,5,6,6,6,Mercedes P6
+2023,21,São Paulo GP,Yes,L. Hamilton,MER,8,2,4,2,Strong P2; sprint P2
+2023,21,São Paulo GP,Yes,L. Norris,MCL,6,4,5,4,McLaren P4
+2023,21,São Paulo GP,Yes,M. Verstappen,RBR,3,1,2,1,Win in Brazil; sprint win
+2023,21,São Paulo GP,Yes,O. Piastri,MCL,10,9,9,9,Points
+2023,21,São Paulo GP,Yes,S. Perez,RBR,2,5,1,5,Sprint pole; P5 race
+2023,22,Las Vegas GP,No,C. Leclerc,FER,1,2,,,Pole but P2
+2023,22,Las Vegas GP,No,C. Sainz Jr,FER,5,3,,,Ferrari 2-3
+2023,22,Las Vegas GP,No,E. Ocon,ALP,12,4,,,Surprise P4
+2023,22,Las Vegas GP,No,F. Alonso,AMR,9,9,,,Points
+2023,22,Las Vegas GP,No,G. Russell,MER,3,8,,,P8
+2023,22,Las Vegas GP,No,L. Hamilton,MER,8,5,,,P5
+2023,22,Las Vegas GP,No,L. Norris,MCL,7,6,,,McLaren P6
+2023,22,Las Vegas GP,No,M. Verstappen,RBR,6,1,,,Win in inaugural Las Vegas GP
+2023,22,Las Vegas GP,No,O. Piastri,MCL,11,7,,,Points
+2023,22,Las Vegas GP,No,S. Perez,RBR,2,DNF,,,DNF
+2023,23,Qatar GP,Yes,C. Leclerc,FER,6,6,6,6,Ferrari P6
+2023,23,Qatar GP,Yes,C. Sainz Jr,FER,8,5,7,5,Ferrari P5
+2023,23,Qatar GP,Yes,F. Alonso,AMR,9,9,9,9,Points
+2023,23,Qatar GP,Yes,G. Russell,MER,4,4,4,4,P4 Russell
+2023,23,Qatar GP,Yes,L. Hamilton,MER,5,3,5,3,Hamilton P3
+2023,23,Qatar GP,Yes,L. Norris,MCL,2,7,2,7,McLaren P7
+2023,23,Qatar GP,Yes,M. Verstappen,RBR,1,1,1,1,Dominant win; sprint win
+2023,23,Qatar GP,Yes,O. Piastri,MCL,3,2,3,2,McLaren P2; sprint P2
+2023,23,Qatar GP,Yes,S. Perez,RBR,7,8,8,8,P8
+2023,24,Abu Dhabi GP,No,C. Leclerc,FER,5,2,,,Ferrari P2
+2023,24,Abu Dhabi GP,No,C. Sainz Jr,FER,3,5,,,Ferrari P5
+2023,24,Abu Dhabi GP,No,F. Alonso,AMR,8,9,,,Points
+2023,24,Abu Dhabi GP,No,G. Russell,MER,4,3,,,Mercedes P3
+2023,24,Abu Dhabi GP,No,L. Hamilton,MER,2,4,,,P4 Hamilton
+2023,24,Abu Dhabi GP,No,L. Norris,MCL,6,6,,,P6
+2023,24,Abu Dhabi GP,No,M. Verstappen,RBR,1,1,,,Season finale win #19
+2023,24,Abu Dhabi GP,No,O. Piastri,MCL,9,7,,,P7
+2023,24,Abu Dhabi GP,No,S. Perez,RBR,7,8,,,Off season form
+2024,0,Madrid GP,No,N/A,N/A,N/A,N/A,,,Race not on 2024 calendar - new circuit debuts in 2026
+2024,1,Bahrain GP,No,C. Leclerc,FER,2,4,,,"P2 grid, P4 finish"
+2024,1,Bahrain GP,No,C. Sainz Jr,FER,4,3,,,Ferrari P3
+2024,1,Bahrain GP,No,F. Alonso,AMR,7,8,,,Solid points
+2024,1,Bahrain GP,No,G. Russell,MER,8,5,,,Mercedes recovery
+2024,1,Bahrain GP,No,L. Hamilton,MER,6,7,,,Points finish
+2024,1,Bahrain GP,No,L. Norris,MCL,11,9,,,Midfield
+2024,1,Bahrain GP,No,L. Stroll,AMR,5,6,,,Aston Martin points
+2024,1,Bahrain GP,No,M. Verstappen,RBR,1,1,,,Dominant pole to win
+2024,1,Bahrain GP,No,O. Piastri,MCL,13,10,,,Points finish
+2024,1,Bahrain GP,No,S. Perez,RBR,3,2,,,RBR 1-2
+2024,2,Saudi Arabian GP,No,C. Leclerc,FER,2,3,,,Ferrari P3
+2024,2,Saudi Arabian GP,No,C. Sainz Jr,FER,4,4,,,Solid Ferrari
+2024,2,Saudi Arabian GP,No,F. Alonso,AMR,9,8,,,Points
+2024,2,Saudi Arabian GP,No,G. Russell,MER,5,7,,,Mercedes off pace
+2024,2,Saudi Arabian GP,No,L. Hamilton,MER,8,10,,,Tough weekend
+2024,2,Saudi Arabian GP,No,L. Norris,MCL,6,6,,,Good points haul
+2024,2,Saudi Arabian GP,No,M. Verstappen,RBR,1,1,,,Another dominant win
+2024,2,Saudi Arabian GP,No,O. Piastri,MCL,7,5,,,McLaren improving
+2024,2,Saudi Arabian GP,No,S. Perez,RBR,3,2,,,RBR 1-2 again
+2024,3,Australian GP,No,C. Leclerc,FER,2,DNF,,,DNF from P2
+2024,3,Australian GP,No,C. Sainz Jr,FER,1,1,,,Dominant win after Leclerc DNF
+2024,3,Australian GP,No,F. Alonso,AMR,10,5,,,Solid Aston Martin
+2024,3,Australian GP,No,G. Russell,MER,3,DNF,,,DNF while leading
+2024,3,Australian GP,No,L. Hamilton,MER,4,3,,,Podium for Mercedes
+2024,3,Australian GP,No,L. Norris,MCL,5,2,,,Strong P2 finish
+2024,3,Australian GP,No,M. Verstappen,RBR,1,DNF,,,Engine DNF from pole
+2024,3,Australian GP,No,O. Piastri,MCL,9,4,,,Points finish
+2024,3,Australian GP,No,P. Gasly,ALP,12,11,,,Outside points
+2024,3,Australian GP,No,S. Perez,RBR,7,6,,,Points
+2024,4,Japanese GP,No,C. Leclerc,FER,4,4,,,Consistent Ferrari
+2024,4,Japanese GP,No,C. Sainz Jr,FER,3,3,,,Ferrari P3
+2024,4,Japanese GP,No,F. Alonso,AMR,10,8,,,Points
+2024,4,Japanese GP,No,G. Russell,MER,9,6,,,Mercedes points
+2024,4,Japanese GP,No,L. Hamilton,MER,8,7,,,Points finish
+2024,4,Japanese GP,No,L. Norris,MCL,6,3,,,Podium for McLaren
+2024,4,Japanese GP,No,L. Stroll,AMR,11,9,,,Points
+2024,4,Japanese GP,No,M. Verstappen,RBR,1,1,,,Dominant Suzuka win
+2024,4,Japanese GP,No,O. Piastri,MCL,5,5,,,McLaren strong
+2024,4,Japanese GP,No,S. Perez,RBR,2,2,,,RBR 1-2
+2024,5,Chinese GP,Yes,C. Leclerc,FER,6,5,5,5,Points finish
+2024,5,Chinese GP,Yes,C. Sainz Jr,FER,4,4,3,4,Ferrari P4
+2024,5,Chinese GP,Yes,F. Alonso,AMR,10,10,10,10,Points
+2024,5,Chinese GP,Yes,G. Russell,MER,5,6,6,6,Mercedes solid
+2024,5,Chinese GP,Yes,L. Hamilton,MER,7,7,7,7,Points
+2024,5,Chinese GP,Yes,L. Norris,MCL,2,2,2,2,P2 race and sprint
+2024,5,Chinese GP,Yes,M. Verstappen,RBR,1,1,1,1,Pole and win; sprint also won
+2024,5,Chinese GP,Yes,O. Piastri,MCL,9,8,8,8,McLaren points
+2024,5,Chinese GP,Yes,S. Perez,RBR,3,3,4,3,RBR 1-3; sprint P3
+2024,6,Miami GP,Yes,C. Leclerc,FER,4,3,3,3,Ferrari podium; sprint P3
+2024,6,Miami GP,Yes,C. Sainz Jr,FER,2,4,4,4,Ferrari P4; sprint P4
+2024,6,Miami GP,Yes,F. Alonso,AMR,12,9,12,11,Midfield
+2024,6,Miami GP,Yes,G. Russell,MER,8,6,8,7,Mercedes recovery
+2024,6,Miami GP,Yes,L. Hamilton,MER,7,7,7,8,Points
+2024,6,Miami GP,Yes,L. Norris,MCL,3,1,2,2,First F1 win; P2 sprint
+2024,6,Miami GP,Yes,M. Verstappen,RBR,1,2,1,1,Pole; sprint win; P2 race
+2024,6,Miami GP,Yes,O. Piastri,MCL,6,5,6,6,McLaren double points
+2024,6,Miami GP,Yes,S. Perez,RBR,5,5,5,5,RBR P5
+2024,8,Monaco GP,No,C. Leclerc,FER,1,1,,,Pole to win at home race
+2024,8,Monaco GP,No,C. Sainz Jr,FER,3,3,,,Ferrari 1-3
+2024,8,Monaco GP,No,F. Alonso,AMR,9,9,,,Midfield
+2024,8,Monaco GP,No,G. Russell,MER,5,7,,,Mercedes P7
+2024,8,Monaco GP,No,L. Hamilton,MER,8,8,,,P8 for Hamilton
+2024,8,Monaco GP,No,L. Norris,MCL,4,4,,,Solid McLaren
+2024,8,Monaco GP,No,L. Stroll,AMR,11,11,,,Outside points
+2024,8,Monaco GP,No,M. Verstappen,RBR,6,6,,,Limited by overcut strategy
+2024,8,Monaco GP,No,O. Piastri,MCL,2,2,,,MCL strong P2
+2024,8,Monaco GP,No,S. Perez,RBR,7,5,,,Red Bull limited at Monaco
+2024,9,Canadian GP,No,C. Leclerc,FER,3,6,,,Ferrari P6
+2024,9,Canadian GP,No,C. Sainz Jr,FER,2,5,,,Ferrari P5
+2024,9,Canadian GP,No,F. Alonso,AMR,10,9,,,Points
+2024,9,Canadian GP,No,G. Russell,MER,1,3,,,Pole but P3 finish
+2024,9,Canadian GP,No,L. Hamilton,MER,9,4,,,Recovery drive
+2024,9,Canadian GP,No,L. Norris,MCL,4,2,,,McLaren P2
+2024,9,Canadian GP,No,M. Verstappen,RBR,6,1,,,Superb win from P6
+2024,9,Canadian GP,No,O. Piastri,MCL,7,7,,,McLaren solid
+2024,9,Canadian GP,No,S. Perez,RBR,5,8,,,RBR points
+2024,10,Barcelona-Catalunya GP,No,C. Leclerc,FER,8,5,,,Ferrari P5
+2024,10,Barcelona-Catalunya GP,No,C. Sainz Jr,FER,3,6,,,Ferrari P6
+2024,10,Barcelona-Catalunya GP,No,F. Alonso,AMR,10,9,,,Midfield
+2024,10,Barcelona-Catalunya GP,No,G. Russell,MER,4,4,,,Solid Mercedes
+2024,10,Barcelona-Catalunya GP,No,L. Hamilton,MER,5,3,,,Podium for Hamilton
+2024,10,Barcelona-Catalunya GP,No,L. Norris,MCL,1,2,,,"Pole, P2 finish"
+2024,10,Barcelona-Catalunya GP,No,M. Verstappen,RBR,2,1,,,Strong win
+2024,10,Barcelona-Catalunya GP,No,O. Piastri,MCL,7,7,,,McLaren P7
+2024,10,Barcelona-Catalunya GP,No,S. Perez,RBR,6,8,,,Points
+2024,11,Austrian GP,Yes,C. Leclerc,FER,7,4,5,4,Ferrari P4; sprint P4
+2024,11,Austrian GP,Yes,C. Sainz Jr,FER,6,5,6,5,Ferrari P5
+2024,11,Austrian GP,Yes,F. Alonso,AMR,10,9,10,9,Points
+2024,11,Austrian GP,Yes,G. Russell,MER,2,1,3,3,Dominant race win; sprint P3
+2024,11,Austrian GP,Yes,L. Hamilton,MER,9,12,9,10,"Collision, difficult weekend"
+2024,11,Austrian GP,Yes,L. Norris,MCL,3,3,2,2,Podium; sprint P2
+2024,11,Austrian GP,Yes,M. Verstappen,RBR,1,2,1,1,P2 race; sprint win
+2024,11,Austrian GP,Yes,O. Piastri,MCL,4,6,4,6,McLaren double points
+2024,11,Austrian GP,Yes,S. Perez,RBR,5,DNF,5,DNF,Collision with Norris in race
+2024,12,British GP,No,C. Leclerc,FER,3,4,,,Ferrari solid
+2024,12,British GP,No,C. Sainz Jr,FER,7,5,,,Ferrari P5
+2024,12,British GP,No,F. Alonso,AMR,9,8,,,Points
+2024,12,British GP,No,G. Russell,MER,8,3,,,Mercedes P3
+2024,12,British GP,No,L. Hamilton,MER,5,1,,,Emotional final British GP win for Mercedes
+2024,12,British GP,No,L. Norris,MCL,1,2,,,"Pole, P2 finish"
+2024,12,British GP,No,M. Verstappen,RBR,6,6,,,Collided with Norris in race
+2024,12,British GP,No,O. Piastri,MCL,4,7,,,McLaren points
+2024,12,British GP,No,S. Perez,RBR,10,9,,,Tough weekend
+2024,13,Hungarian GP,No,C. Leclerc,FER,7,4,,,Ferrari P4
+2024,13,Hungarian GP,No,C. Sainz Jr,FER,5,6,,,Ferrari P6
+2024,13,Hungarian GP,No,F. Alonso,AMR,9,9,,,Points
+2024,13,Hungarian GP,No,G. Russell,MER,3,1,,,DSQ after initial win (note: Hamilton P2 promoted to race win)
+2024,13,Hungarian GP,No,L. Hamilton,MER,6,2,,,Strong Hamilton drive
+2024,13,Hungarian GP,No,L. Norris,MCL,1,3,,,"Pole, P3 finish"
+2024,13,Hungarian GP,No,M. Verstappen,RBR,4,5,,,RBR P5
+2024,13,Hungarian GP,No,O. Piastri,MCL,2,1,,,Maiden GP win for Piastri
+2024,13,Hungarian GP,No,S. Perez,RBR,8,8,,,RBR P8
+2024,14,Belgian GP,No,C. Leclerc,FER,4,6,,,Ferrari P6
+2024,14,Belgian GP,No,C. Sainz Jr,FER,8,7,,,Ferrari P7
+2024,14,Belgian GP,No,F. Alonso,AMR,10,9,,,Points
+2024,14,Belgian GP,No,G. Russell,MER,1,2,,,"Pole, P2 for Russell"
+2024,14,Belgian GP,No,L. Hamilton,MER,11,1,,,Brilliant win from back of grid
+2024,14,Belgian GP,No,L. Norris,MCL,5,3,,,McLaren podium
+2024,14,Belgian GP,No,M. Verstappen,RBR,2,5,,,RBR P5 from P2 grid
+2024,14,Belgian GP,No,O. Piastri,MCL,3,4,,,McLaren double top-4
+2024,14,Belgian GP,No,S. Perez,RBR,6,8,,,Points
+2024,15,Dutch GP,No,C. Leclerc,FER,3,4,,,Ferrari P4
+2024,15,Dutch GP,No,C. Sainz Jr,FER,6,7,,,Ferrari P7
+2024,15,Dutch GP,No,F. Alonso,AMR,9,9,,,Points
+2024,15,Dutch GP,No,G. Russell,MER,7,5,,,Mercedes P5
+2024,15,Dutch GP,No,L. Hamilton,MER,5,6,,,P6 Hamilton
+2024,15,Dutch GP,No,L. Norris,MCL,1,1,,,First Zandvoort win
+2024,15,Dutch GP,No,M. Verstappen,RBR,2,2,,,Home race P2
+2024,15,Dutch GP,No,O. Piastri,MCL,4,3,,,MCL 1-3
+2024,15,Dutch GP,No,S. Perez,RBR,8,8,,,RBR P8
+2024,16,Italian GP,No,C. Leclerc,FER,2,1,,,Ferrari win at Monza in front of tifosi
+2024,16,Italian GP,No,C. Sainz Jr,FER,4,7,,,Tough Ferrari weekend
+2024,16,Italian GP,No,F. Alonso,AMR,9,9,,,Points
+2024,16,Italian GP,No,G. Russell,MER,7,4,,,Mercedes P4
+2024,16,Italian GP,No,L. Hamilton,MER,6,5,,,P5 for Hamilton
+2024,16,Italian GP,No,L. Norris,MCL,3,3,,,McLaren P3
+2024,16,Italian GP,No,M. Verstappen,RBR,5,6,,,Off the pace at Monza
+2024,16,Italian GP,No,O. Piastri,MCL,1,2,,,"Pole, P2 for Piastri"
+2024,16,Italian GP,No,S. Perez,RBR,8,8,,,Points
+2024,17,Azerbaijan GP,No,C. Leclerc,FER,2,2,,,Ferrari P2
+2024,17,Azerbaijan GP,No,C. Sainz Jr,FER,3,3,,,Ferrari 2-3
+2024,17,Azerbaijan GP,No,F. Alonso,AMR,8,8,,,Points
+2024,17,Azerbaijan GP,No,G. Russell,MER,7,7,,,Mercedes P7
+2024,17,Azerbaijan GP,No,L. Hamilton,MER,9,9,,,Tough weekend
+2024,17,Azerbaijan GP,No,L. Norris,MCL,4,4,,,McLaren P4
+2024,17,Azerbaijan GP,No,M. Verstappen,RBR,5,5,,,Off Ferrari/McLaren pace
+2024,17,Azerbaijan GP,No,O. Piastri,MCL,1,1,,,Pole and win in Baku
+2024,17,Azerbaijan GP,No,S. Perez,RBR,6,DNF,,,DNF
+2024,18,Singapore GP,No,C. Leclerc,FER,3,3,,,Ferrari P3
+2024,18,Singapore GP,No,C. Sainz Jr,FER,4,4,,,Ferrari solid
+2024,18,Singapore GP,No,F. Alonso,AMR,9,9,,,Points
+2024,18,Singapore GP,No,G. Russell,MER,6,5,,,Mercedes P5
+2024,18,Singapore GP,No,L. Hamilton,MER,7,6,,,Points
+2024,18,Singapore GP,No,L. Norris,MCL,1,1,,,Dominant Singapore win
+2024,18,Singapore GP,No,M. Verstappen,RBR,2,2,,,P2 for Verstappen
+2024,18,Singapore GP,No,O. Piastri,MCL,5,7,,,McLaren P7
+2024,18,Singapore GP,No,S. Perez,RBR,8,8,,,RBR P8
+2024,19,United States GP,Yes,C. Leclerc,FER,3,1,2,1,Ferrari win at COTA; sprint win
+2024,19,United States GP,Yes,C. Sainz Jr,FER,2,2,3,2,Ferrari 1-2; sprint P2
+2024,19,United States GP,Yes,F. Alonso,AMR,10,9,10,9,Points
+2024,19,United States GP,Yes,G. Russell,MER,4,5,5,5,Solid Mercedes
+2024,19,United States GP,Yes,L. Hamilton,MER,9,10,9,8,Tough weekend
+2024,19,United States GP,Yes,L. Norris,MCL,5,4,4,4,McLaren P4
+2024,19,United States GP,Yes,M. Verstappen,RBR,1,3,1,3,Pole; sprint P1; P3 race
+2024,19,United States GP,Yes,O. Piastri,MCL,6,6,6,6,McLaren P6
+2024,19,United States GP,Yes,S. Perez,RBR,7,8,7,7,Points
+2024,20,Mexico City GP,No,C. Leclerc,FER,4,1,,,Ferrari win
+2024,20,Mexico City GP,No,C. Sainz Jr,FER,1,2,,,"Ferrari 1-2, Sainz pole"
+2024,20,Mexico City GP,No,F. Alonso,AMR,9,9,,,Points
+2024,20,Mexico City GP,No,G. Russell,MER,6,4,,,Mercedes P4
+2024,20,Mexico City GP,No,L. Hamilton,MER,5,3,,,Hamilton podium
+2024,20,Mexico City GP,No,L. Norris,MCL,3,5,,,McLaren P5
+2024,20,Mexico City GP,No,M. Verstappen,RBR,2,6,,,Off-pace weekend
+2024,20,Mexico City GP,No,O. Piastri,MCL,7,7,,,McLaren P7
+2024,20,Mexico City GP,No,S. Perez,RBR,8,8,,,Tough home race
+2024,21,São Paulo GP,Yes,C. Leclerc,FER,8,5,7,4,Ferrari P5; sprint P4
+2024,21,São Paulo GP,Yes,C. Sainz Jr,FER,3,7,2,7,Ferrari P7; sprint P7
+2024,21,São Paulo GP,Yes,E. Ocon,HAS,15,2,12,6,Surprise P2 race; sprint P6
+2024,21,São Paulo GP,Yes,G. Russell,MER,1,4,1,3,Pole; sprint P1 quali; P3 sprint
+2024,21,São Paulo GP,Yes,L. Hamilton,MER,2,3,3,2,Hamilton podium; sprint P2
+2024,21,São Paulo GP,Yes,L. Norris,MCL,5,6,4,5,McLaren P6 in title fight; sprint P5
+2024,21,São Paulo GP,Yes,M. Verstappen,RBR,17,1,5,1,Epic win from back; sprint also won
+2024,21,São Paulo GP,Yes,O. Piastri,MCL,10,8,9,8,McLaren P8
+2024,21,São Paulo GP,Yes,S. Perez,RBR,11,9,10,9,RBR P9
+2024,22,Las Vegas GP,No,C. Leclerc,FER,1,1,,,Pole and win for Leclerc
+2024,22,Las Vegas GP,No,C. Sainz Jr,FER,2,3,,,Ferrari 1-3
+2024,22,Las Vegas GP,No,F. Alonso,AMR,9,9,,,Points
+2024,22,Las Vegas GP,No,G. Russell,MER,3,4,,,Mercedes P4
+2024,22,Las Vegas GP,No,L. Hamilton,MER,4,2,,,Hamilton P2
+2024,22,Las Vegas GP,No,L. Norris,MCL,5,6,,,McLaren P6
+2024,22,Las Vegas GP,No,M. Verstappen,RBR,6,5,,,RBR P5
+2024,22,Las Vegas GP,No,O. Piastri,MCL,7,7,,,McLaren P7
+2024,22,Las Vegas GP,No,S. Perez,RBR,8,8,,,Points
+2024,23,Qatar GP,Yes,C. Leclerc,FER,5,5,5,5,Ferrari P5
+2024,23,Qatar GP,Yes,C. Sainz Jr,FER,6,7,6,7,Ferrari P7
+2024,23,Qatar GP,Yes,F. Alonso,AMR,9,9,9,9,Points
+2024,23,Qatar GP,Yes,G. Russell,MER,4,3,4,3,Mercedes P3
+2024,23,Qatar GP,Yes,L. Hamilton,MER,7,6,7,6,Points
+2024,23,Qatar GP,Yes,L. Norris,MCL,3,2,3,2,McLaren P2; sprint P2
+2024,23,Qatar GP,Yes,M. Verstappen,RBR,1,1,1,1,World champion confirmed; dominant win and sprint
+2024,23,Qatar GP,Yes,O. Piastri,MCL,2,4,2,4,McLaren P4
+2024,23,Qatar GP,Yes,S. Perez,RBR,8,8,8,8,RBR P8
+2024,24,Abu Dhabi GP,No,C. Leclerc,FER,3,2,,,Ferrari P2
+2024,24,Abu Dhabi GP,No,C. Sainz Jr,FER,4,3,,,"Ferrari P3, final race for Ferrari"
+2024,24,Abu Dhabi GP,No,F. Alonso,AMR,9,8,,,Points
+2024,24,Abu Dhabi GP,No,G. Russell,MER,2,5,,,Mercedes P5
+2024,24,Abu Dhabi GP,No,L. Hamilton,MER,7,6,,,Final race for Mercedes
+2024,24,Abu Dhabi GP,No,L. Norris,MCL,1,1,,,"Dominant pole to win, season finale"
+2024,24,Abu Dhabi GP,No,M. Verstappen,RBR,5,4,,,Champion P4
+2024,24,Abu Dhabi GP,No,O. Piastri,MCL,6,7,,,McLaren P7
+2024,24,Abu Dhabi GP,No,S. Perez,RBR,8,9,,,Final race for Perez at RBR
+2025,1,Australian GP,No,L. Norris,MCL,1,1,,,
+2025,1,Australian GP,No,O. Piastri,MCL,2,9,,,
+2025,1,Australian GP,No,M. Verstappen,RBR,3,2,,,
+2025,1,Australian GP,No,G. Russell,MER,4,3,,,
+2025,1,Australian GP,No,K. Antonelli,MER,16,4,,,
+2025,1,Australian GP,No,C. Leclerc,FER,7,7,,,
+2025,1,Australian GP,No,L. Hamilton,FER,8,6,,,
+2025,1,Australian GP,No,F. Alonso,AMR,12,14,,,
+2025,1,Australian GP,No,C. Sainz Jr,WIL,10,DNF,,,
+2025,1,Australian GP,No,A. Albon,WIL,6,5,,,
+2025,1,Australian GP,No,I. Hadjar,RBS,11,DNS,,,
+2025,1,Australian GP,No,P. Gasly,ALP,9,13,,,
+2025,1,Australian GP,No,L. Lawson,RBS,18,DNF,,,
+2025,2,Chinese GP,Yes,L. Norris,MCL,3,2,3,8,
+2025,2,Chinese GP,Yes,O. Piastri,MCL,1,1,2,2,
+2025,2,Chinese GP,Yes,M. Verstappen,RBR,4,4,4,3,
+2025,2,Chinese GP,Yes,G. Russell,MER,2,3,5,4,
+2025,2,Chinese GP,Yes,K. Antonelli,MER,8,5,8,7,
+2025,2,Chinese GP,Yes,C. Leclerc,FER,6,DSQ,6,5,
+2025,2,Chinese GP,Yes,L. Hamilton,FER,5,DSQ,1,1,
+2025,2,Chinese GP,Yes,F. Alonso,AMR,13,14,10,10,
+2025,2,Chinese GP,Yes,C. Sainz Jr,WIL,15,10,11,11,
+2025,2,Chinese GP,Yes,A. Albon,WIL,10,8,12,12,
+2025,2,Chinese GP,Yes,I. Hadjar,RBS,7,10,7,9,
+2025,2,Chinese GP,Yes,P. Gasly,ALP,16,DSQ,13,13,
+2025,2,Chinese GP,Yes,L. Lawson,RBS,20,DNF,16,14,
+2025,3,Japanese GP,No,L. Norris,MCL,2,2,,,
+2025,3,Japanese GP,No,O. Piastri,MCL,3,3,,,
+2025,3,Japanese GP,No,M. Verstappen,RBR,1,1,,,
+2025,3,Japanese GP,No,G. Russell,MER,5,4,,,
+2025,3,Japanese GP,No,K. Antonelli,MER,6,5,,,
+2025,3,Japanese GP,No,C. Leclerc,FER,4,4,,,
+2025,3,Japanese GP,No,L. Hamilton,FER,8,7,,,
+2025,3,Japanese GP,No,F. Alonso,AMR,13,14,,,
+2025,3,Japanese GP,No,C. Sainz Jr,WIL,12,14,,,
+2025,3,Japanese GP,No,A. Albon,WIL,9,11,,,
+2025,3,Japanese GP,No,I. Hadjar,RBS,7,6,,,
+2025,3,Japanese GP,No,P. Gasly,ALP,11,14,,,
+2025,3,Japanese GP,No,L. Lawson,RBS,14,14,,,
+2025,4,Bahrain GP,No,L. Norris,MCL,6,3,,,
+2025,4,Bahrain GP,No,O. Piastri,MCL,1,1,,,
+2025,4,Bahrain GP,No,M. Verstappen,RBR,7,6,,,
+2025,4,Bahrain GP,No,G. Russell,MER,2,2,,,
+2025,4,Bahrain GP,No,K. Antonelli,MER,4,DNF,,,
+2025,4,Bahrain GP,No,C. Leclerc,FER,3,4,,,
+2025,4,Bahrain GP,No,L. Hamilton,FER,9,5,,,
+2025,4,Bahrain GP,No,F. Alonso,AMR,13,11,,,
+2025,4,Bahrain GP,No,C. Sainz Jr,WIL,8,DNF,,,
+2025,4,Bahrain GP,No,A. Albon,WIL,15,14,,,
+2025,4,Bahrain GP,No,I. Hadjar,RBS,12,12,,,
+2025,4,Bahrain GP,No,P. Gasly,ALP,5,8,,,
+2025,4,Bahrain GP,No,L. Lawson,RBS,17,14,,,
+2025,5,Saudi Arabian GP,No,L. Norris,MCL,10,4,,,
+2025,5,Saudi Arabian GP,No,O. Piastri,MCL,2,1,,,
+2025,5,Saudi Arabian GP,No,M. Verstappen,RBR,1,2,,,
+2025,5,Saudi Arabian GP,No,G. Russell,MER,3,5,,,
+2025,5,Saudi Arabian GP,No,K. Antonelli,MER,5,6,,,
+2025,5,Saudi Arabian GP,No,C. Leclerc,FER,4,3,,,
+2025,5,Saudi Arabian GP,No,L. Hamilton,FER,7,7,,,
+2025,5,Saudi Arabian GP,No,F. Alonso,AMR,13,14,,,
+2025,5,Saudi Arabian GP,No,C. Sainz Jr,WIL,6,8,,,
+2025,5,Saudi Arabian GP,No,A. Albon,WIL,11,9,,,
+2025,5,Saudi Arabian GP,No,I. Hadjar,RBS,14,10,,,
+2025,5,Saudi Arabian GP,No,P. Gasly,ALP,9,14,,,
+2025,5,Saudi Arabian GP,No,L. Lawson,RBS,12,14,,,
+2025,6,Miami GP,Yes,L. Norris,MCL,2,1,2,1,
+2025,6,Miami GP,Yes,O. Piastri,MCL,4,2,4,2,
+2025,6,Miami GP,Yes,M. Verstappen,RBR,1,3,1,20,
+2025,6,Miami GP,Yes,G. Russell,MER,5,4,5,4,
+2025,6,Miami GP,Yes,K. Antonelli,MER,3,6,1,7,
+2025,6,Miami GP,Yes,C. Leclerc,FER,8,9,,DNS,
+2025,6,Miami GP,Yes,L. Hamilton,FER,12,4,6,3,
+2025,6,Miami GP,Yes,F. Alonso,AMR,17,5,17,DNS,
+2025,6,Miami GP,Yes,C. Sainz Jr,WIL,6,10,7,8,
+2025,6,Miami GP,Yes,A. Albon,WIL,7,5,8,5,
+2025,6,Miami GP,Yes,I. Hadjar,RBS,11,14,9,10,
+2025,6,Miami GP,Yes,P. Gasly,ALP,18,14,12,12,
+2025,6,Miami GP,Yes,L. Lawson,RBS,15,DNF,14,14,
+2025,7,Emilia-Romagna GP,No,L. Norris,MCL,4,2,,,
+2025,7,Emilia-Romagna GP,No,O. Piastri,MCL,1,3,,,
+2025,7,Emilia-Romagna GP,No,M. Verstappen,RBR,2,1,,,
+2025,7,Emilia-Romagna GP,No,G. Russell,MER,3,7,,,
+2025,7,Emilia-Romagna GP,No,K. Antonelli,MER,13,DNF,,,
+2025,7,Emilia-Romagna GP,No,C. Leclerc,FER,11,6,,,
+2025,7,Emilia-Romagna GP,No,L. Hamilton,FER,12,4,,,
+2025,7,Emilia-Romagna GP,No,F. Alonso,AMR,5,14,,,
+2025,7,Emilia-Romagna GP,No,C. Sainz Jr,WIL,6,8,,,
+2025,7,Emilia-Romagna GP,No,A. Albon,WIL,7,5,,,
+2025,7,Emilia-Romagna GP,No,I. Hadjar,RBS,9,9,,,
+2025,7,Emilia-Romagna GP,No,P. Gasly,ALP,10,14,,,
+2025,7,Emilia-Romagna GP,No,F. Colapinto,ALP,15,14,,,
+2025,7,Emilia-Romagna GP,No,L. Lawson,RBS,16,14,,,
+2025,8,Monaco GP,No,L. Norris,MCL,1,1,,,
+2025,8,Monaco GP,No,O. Piastri,MCL,3,2,,,
+2025,8,Monaco GP,No,M. Verstappen,RBR,5,6,,,
+2025,8,Monaco GP,No,G. Russell,MER,14,DNF,,,
+2025,8,Monaco GP,No,K. Antonelli,MER,15,DNF,,,
+2025,8,Monaco GP,No,C. Leclerc,FER,2,1,,,
+2025,8,Monaco GP,No,L. Hamilton,FER,4,5,,,
+2025,8,Monaco GP,No,F. Alonso,AMR,7,14,,,
+2025,8,Monaco GP,No,C. Sainz Jr,WIL,11,12,,,
+2025,8,Monaco GP,No,A. Albon,WIL,10,12,,,
+2025,8,Monaco GP,No,I. Hadjar,RBS,6,8,,,
+2025,8,Monaco GP,No,P. Gasly,ALP,18,14,,,
+2025,8,Monaco GP,No,F. Colapinto,ALP,20,14,,,
+2025,8,Monaco GP,No,L. Lawson,RBS,9,9,,,
+2025,9,Spanish GP,No,L. Norris,MCL,2,2,,,
+2025,9,Spanish GP,No,O. Piastri,MCL,1,1,,,
+2025,9,Spanish GP,No,M. Verstappen,RBR,3,13,,,
+2025,9,Spanish GP,No,G. Russell,MER,4,4,,,
+2025,9,Spanish GP,No,K. Antonelli,MER,6,14,,,
+2025,9,Spanish GP,No,C. Leclerc,FER,7,3,,,
+2025,9,Spanish GP,No,L. Hamilton,FER,5,6,,,
+2025,9,Spanish GP,No,F. Alonso,AMR,10,9,,,
+2025,9,Spanish GP,No,C. Sainz Jr,WIL,18,14,,,
+2025,9,Spanish GP,No,A. Albon,WIL,11,14,,,
+2025,9,Spanish GP,No,I. Hadjar,RBS,9,7,,,
+2025,9,Spanish GP,No,P. Gasly,ALP,8,7,,,
+2025,9,Spanish GP,No,F. Colapinto,ALP,19,14,,,
+2025,9,Spanish GP,No,L. Lawson,RBS,13,14,,,
+2025,10,Canadian GP,No,L. Norris,MCL,7,1,,,
+2025,10,Canadian GP,No,O. Piastri,MCL,3,3,,,
+2025,10,Canadian GP,No,M. Verstappen,RBR,2,2,,,
+2025,10,Canadian GP,No,G. Russell,MER,1,1,,,
+2025,10,Canadian GP,No,K. Antonelli,MER,4,2,,,
+2025,10,Canadian GP,No,C. Leclerc,FER,8,5,,,
+2025,10,Canadian GP,No,L. Hamilton,FER,5,6,,,
+2025,10,Canadian GP,No,F. Alonso,AMR,6,8,,,
+2025,10,Canadian GP,No,C. Sainz Jr,WIL,17,11,,,
+2025,10,Canadian GP,No,A. Albon,WIL,10,14,,,
+2025,10,Canadian GP,No,I. Hadjar,RBS,9,14,,,
+2025,10,Canadian GP,No,P. Gasly,ALP,20,14,,,
+2025,10,Canadian GP,No,F. Colapinto,ALP,12,9,,,
+2025,10,Canadian GP,No,L. Lawson,RBS,19,14,,,
+2025,11,Austrian GP,No,L. Norris,MCL,1,1,,,
+2025,11,Austrian GP,No,O. Piastri,MCL,3,2,,,
+2025,11,Austrian GP,No,M. Verstappen,RBR,7,DNF,,,
+2025,11,Austrian GP,No,G. Russell,MER,5,5,,,
+2025,11,Austrian GP,No,K. Antonelli,MER,9,DNF,,,
+2025,11,Austrian GP,No,C. Leclerc,FER,2,3,,,
+2025,11,Austrian GP,No,L. Hamilton,FER,4,4,,,
+2025,11,Austrian GP,No,F. Alonso,AMR,11,7,,,
+2025,11,Austrian GP,No,A. Albon,WIL,12,14,,,
+2025,11,Austrian GP,No,I. Hadjar,RBS,13,14,,,
+2025,11,Austrian GP,No,P. Gasly,ALP,10,14,,,
+2025,11,Austrian GP,No,F. Colapinto,ALP,14,14,,,
+2025,11,Austrian GP,No,L. Lawson,RBS,6,6,,,
+2025,12,British GP,No,L. Norris,MCL,3,1,,,
+2025,12,British GP,No,O. Piastri,MCL,2,2,,,
+2025,12,British GP,No,M. Verstappen,RBR,1,4,,,
+2025,12,British GP,No,G. Russell,MER,4,14,,,
+2025,12,British GP,No,K. Antonelli,MER,7,14,,,
+2025,12,British GP,No,C. Leclerc,FER,6,DNF,,,
+2025,12,British GP,No,L. Hamilton,FER,5,4,,,
+2025,12,British GP,No,F. Alonso,AMR,9,10,,,
+2025,12,British GP,No,C. Sainz Jr,WIL,11,14,,,
+2025,12,British GP,No,A. Albon,WIL,14,8,,,
+2025,12,British GP,No,I. Hadjar,RBS,13,14,,,
+2025,12,British GP,No,P. Gasly,ALP,10,6,,,
+2025,12,British GP,No,F. Colapinto,ALP,20,14,,,
+2025,12,British GP,No,L. Lawson,RBS,16,14,,,
+2025,13,Belgian GP,Yes,L. Norris,MCL,1,1,1,3,
+2025,13,Belgian GP,Yes,O. Piastri,MCL,2,2,2,4,
+2025,13,Belgian GP,Yes,M. Verstappen,RBR,4,3,1,1,
+2025,13,Belgian GP,Yes,G. Russell,MER,6,5,3,2,
+2025,13,Belgian GP,Yes,K. Antonelli,MER,18,14,5,6,
+2025,13,Belgian GP,Yes,C. Leclerc,FER,3,4,4,5,
+2025,13,Belgian GP,Yes,L. Hamilton,FER,16,7,7,7,
+2025,13,Belgian GP,Yes,F. Alonso,AMR,19,14,9,10,
+2025,13,Belgian GP,Yes,C. Sainz Jr,WIL,15,10,10,11,
+2025,13,Belgian GP,Yes,A. Albon,WIL,5,6,11,12,
+2025,13,Belgian GP,Yes,I. Hadjar,RBS,8,8,8,9,
+2025,13,Belgian GP,Yes,P. Gasly,ALP,13,14,13,14,
+2025,13,Belgian GP,Yes,F. Colapinto,ALP,17,14,15,16,
+2025,13,Belgian GP,Yes,L. Lawson,RBS,9,8,14,15,
+2025,14,Hungarian GP,No,L. Norris,MCL,3,1,,,
+2025,14,Hungarian GP,No,O. Piastri,MCL,2,2,,,
+2025,14,Hungarian GP,No,M. Verstappen,RBR,8,12,,,
+2025,14,Hungarian GP,No,G. Russell,MER,4,3,,,
+2025,14,Hungarian GP,No,K. Antonelli,MER,15,14,,,
+2025,14,Hungarian GP,No,C. Leclerc,FER,1,4,,,
+2025,14,Hungarian GP,No,L. Hamilton,FER,12,DNF,,,
+2025,14,Hungarian GP,No,F. Alonso,AMR,5,4,,,
+2025,14,Hungarian GP,No,C. Sainz Jr,WIL,13,14,,,
+2025,14,Hungarian GP,No,A. Albon,WIL,20,14,,,
+2025,14,Hungarian GP,No,I. Hadjar,RBS,10,14,,,
+2025,14,Hungarian GP,No,P. Gasly,ALP,17,14,,,
+2025,14,Hungarian GP,No,F. Colapinto,ALP,14,14,,,
+2025,14,Hungarian GP,No,L. Lawson,RBS,9,8,,,
+2025,15,Dutch GP,No,L. Norris,MCL,2,DNF,,,
+2025,15,Dutch GP,No,O. Piastri,MCL,1,1,,,
+2025,15,Dutch GP,No,M. Verstappen,RBR,3,2,,,
+2025,15,Dutch GP,No,G. Russell,MER,5,4,,,
+2025,15,Dutch GP,No,K. Antonelli,MER,11,14,,,
+2025,15,Dutch GP,No,C. Leclerc,FER,6,DNF,,,
+2025,15,Dutch GP,No,L. Hamilton,FER,7,DNF,,,
+2025,15,Dutch GP,No,F. Alonso,AMR,10,7,,,
+2025,15,Dutch GP,No,C. Sainz Jr,WIL,9,14,,,
+2025,15,Dutch GP,No,A. Albon,WIL,15,5,,,
+2025,15,Dutch GP,No,I. Hadjar,RBS,4,3,,,
+2025,15,Dutch GP,No,P. Gasly,ALP,14,14,,,
+2025,15,Dutch GP,No,F. Colapinto,ALP,16,14,,,
+2025,15,Dutch GP,No,L. Lawson,RBS,8,14,,,
+2025,16,Italian GP,No,L. Norris,MCL,2,2,,,
+2025,16,Italian GP,No,O. Piastri,MCL,3,3,,,
+2025,16,Italian GP,No,M. Verstappen,RBR,1,1,,,
+2025,16,Italian GP,No,G. Russell,MER,6,4,,,
+2025,16,Italian GP,No,K. Antonelli,MER,7,9,,,
+2025,16,Italian GP,No,C. Leclerc,FER,4,4,,,
+2025,16,Italian GP,No,L. Hamilton,FER,5,6,,,
+2025,16,Italian GP,No,F. Alonso,AMR,9,14,,,
+2025,16,Italian GP,No,C. Sainz Jr,WIL,13,14,,,
+2025,16,Italian GP,No,A. Albon,WIL,14,7,,,
+2025,16,Italian GP,No,I. Hadjar,RBS,16,14,,,
+2025,16,Italian GP,No,P. Gasly,ALP,19,14,,,
+2025,16,Italian GP,No,F. Colapinto,ALP,18,14,,,
+2025,16,Italian GP,No,L. Lawson,RBS,20,14,,,
+2025,17,Azerbaijan GP,No,L. Norris,MCL,7,2,,,
+2025,17,Azerbaijan GP,No,O. Piastri,MCL,9,DNF,,,
+2025,17,Azerbaijan GP,No,M. Verstappen,RBR,1,1,,,
+2025,17,Azerbaijan GP,No,G. Russell,MER,5,2,,,
+2025,17,Azerbaijan GP,No,K. Antonelli,MER,4,4,,,
+2025,17,Azerbaijan GP,No,C. Leclerc,FER,10,9,,,
+2025,17,Azerbaijan GP,No,L. Hamilton,FER,12,8,,,
+2025,17,Azerbaijan GP,No,F. Alonso,AMR,11,14,,,
+2025,17,Azerbaijan GP,No,C. Sainz Jr,WIL,2,3,,,
+2025,17,Azerbaijan GP,No,A. Albon,WIL,20,14,,,
+2025,17,Azerbaijan GP,No,I. Hadjar,RBS,8,9,,,
+2025,17,Azerbaijan GP,No,P. Gasly,ALP,19,14,,,
+2025,17,Azerbaijan GP,No,F. Colapinto,ALP,16,14,,,
+2025,17,Azerbaijan GP,No,L. Lawson,RBS,3,5,,,
+2025,18,Singapore GP,No,L. Norris,MCL,5,DNF,,,
+2025,18,Singapore GP,No,O. Piastri,MCL,3,3,,,
+2025,18,Singapore GP,No,M. Verstappen,RBR,2,2,,,
+2025,18,Singapore GP,No,G. Russell,MER,1,1,,,
+2025,18,Singapore GP,No,K. Antonelli,MER,4,4,,,
+2025,18,Singapore GP,No,C. Leclerc,FER,7,6,,,
+2025,18,Singapore GP,No,L. Hamilton,FER,6,8,,,
+2025,18,Singapore GP,No,F. Alonso,AMR,10,7,,,
+2025,18,Singapore GP,No,C. Sainz Jr,WIL,,14,,,
+2025,18,Singapore GP,No,A. Albon,WIL,,14,,,
+2025,18,Singapore GP,No,I. Hadjar,RBS,8,14,,,
+2025,18,Singapore GP,No,P. Gasly,ALP,18,14,,,
+2025,18,Singapore GP,No,F. Colapinto,ALP,16,14,,,
+2025,18,Singapore GP,No,L. Lawson,RBS,12,14,,,
+2025,19,United States GP,Yes,L. Norris,MCL,2,5,,DNF,
+2025,19,United States GP,Yes,O. Piastri,MCL,6,7,,DNF,
+2025,19,United States GP,Yes,M. Verstappen,RBR,1,6,1,1,
+2025,19,United States GP,Yes,G. Russell,MER,4,3,2,2,
+2025,19,United States GP,Yes,K. Antonelli,MER,7,14,5,5,
+2025,19,United States GP,Yes,C. Leclerc,FER,3,3,3,3,
+2025,19,United States GP,Yes,L. Hamilton,FER,5,4,4,4,
+2025,19,United States GP,Yes,F. Alonso,AMR,10,14,,DNF,
+2025,19,United States GP,Yes,C. Sainz Jr,WIL,9,8,9,9,
+2025,19,United States GP,Yes,A. Albon,WIL,19,7,10,10,
+2025,19,United States GP,Yes,I. Hadjar,RBS,20,14,7,7,
+2025,19,United States GP,Yes,P. Gasly,ALP,14,14,12,12,
+2025,19,United States GP,Yes,F. Colapinto,ALP,15,10,15,15,
+2025,19,United States GP,Yes,L. Lawson,RBS,12,14,13,13,
+2025,20,Mexico City GP,No,L. Norris,MCL,1,2,,,
+2025,20,Mexico City GP,No,O. Piastri,MCL,8,4,,,
+2025,20,Mexico City GP,No,M. Verstappen,RBR,5,3,,,
+2025,20,Mexico City GP,No,G. Russell,MER,4,7,,,
+2025,20,Mexico City GP,No,K. Antonelli,MER,6,5,,,
+2025,20,Mexico City GP,No,C. Leclerc,FER,2,2,,,
+2025,20,Mexico City GP,No,L. Hamilton,FER,3,8,,,
+2025,20,Mexico City GP,No,F. Alonso,AMR,14,14,,,
+2025,20,Mexico City GP,No,C. Sainz Jr,WIL,7,14,,,
+2025,20,Mexico City GP,No,A. Albon,WIL,17,14,,,
+2025,20,Mexico City GP,No,I. Hadjar,RBS,9,14,,,
+2025,20,Mexico City GP,No,P. Gasly,ALP,18,14,,,
+2025,20,Mexico City GP,No,F. Colapinto,ALP,20,14,,,
+2025,20,Mexico City GP,No,L. Lawson,RBS,15,14,,,
+2025,21,São Paulo GP,Yes,L. Norris,MCL,1,1,1,1,
+2025,21,São Paulo GP,Yes,O. Piastri,MCL,4,5,,5,
+2025,21,São Paulo GP,Yes,M. Verstappen,RBR,16,4,2,4,
+2025,21,São Paulo GP,Yes,G. Russell,MER,6,2,3,3,
+2025,21,São Paulo GP,Yes,K. Antonelli,MER,2,2,2,2,
+2025,21,São Paulo GP,Yes,C. Leclerc,FER,3,8,5,8,
+2025,21,São Paulo GP,Yes,L. Hamilton,FER,13,13,7,9,
+2025,21,São Paulo GP,Yes,F. Alonso,AMR,11,14,10,12,
+2025,21,São Paulo GP,Yes,C. Sainz Jr,WIL,15,14,11,13,
+2025,21,São Paulo GP,Yes,A. Albon,WIL,12,14,12,14,
+2025,21,São Paulo GP,Yes,I. Hadjar,RBS,5,8,9,11,
+2025,21,São Paulo GP,Yes,P. Gasly,ALP,9,10,13,15,
+2025,21,São Paulo GP,Yes,F. Colapinto,ALP,18,14,16,DNF,
+2025,21,São Paulo GP,Yes,L. Lawson,RBS,7,7,14,16,
+2025,22,Las Vegas GP,No,L. Norris,MCL,1,DSQ,,,
+2025,22,Las Vegas GP,No,O. Piastri,MCL,5,DSQ,,,
+2025,22,Las Vegas GP,No,M. Verstappen,RBR,2,1,,,
+2025,22,Las Vegas GP,No,G. Russell,MER,4,2,,,
+2025,22,Las Vegas GP,No,K. Antonelli,MER,17,3,,,
+2025,22,Las Vegas GP,No,C. Leclerc,FER,9,3,,,
+2025,22,Las Vegas GP,No,L. Hamilton,FER,20,8,,,
+2025,22,Las Vegas GP,No,F. Alonso,AMR,7,14,,,
+2025,22,Las Vegas GP,No,C. Sainz Jr,WIL,3,5,,,
+2025,22,Las Vegas GP,No,A. Albon,WIL,16,14,,,
+2025,22,Las Vegas GP,No,I. Hadjar,RBS,8,5,,,
+2025,22,Las Vegas GP,No,P. Gasly,ALP,10,14,,,
+2025,22,Las Vegas GP,No,F. Colapinto,ALP,15,9,,,
+2025,22,Las Vegas GP,No,L. Lawson,RBS,6,14,,,
+2025,23,Qatar GP,Yes,L. Norris,MCL,2,2,1,1,
+2025,23,Qatar GP,Yes,O. Piastri,MCL,1,3,2,2,
+2025,23,Qatar GP,Yes,M. Verstappen,RBR,3,5,3,3,
+2025,23,Qatar GP,Yes,G. Russell,MER,4,3,4,4,
+2025,23,Qatar GP,Yes,K. Antonelli,MER,5,7,5,5,
+2025,23,Qatar GP,Yes,C. Leclerc,FER,10,11,10,11,
+2025,23,Qatar GP,Yes,L. Hamilton,FER,18,DNF,14,14,
+2025,23,Qatar GP,Yes,F. Alonso,AMR,8,6,8,7,
+2025,23,Qatar GP,Yes,C. Sainz Jr,WIL,7,5,9,9,
+2025,23,Qatar GP,Yes,A. Albon,WIL,15,14,11,10,
+2025,23,Qatar GP,Yes,I. Hadjar,RBS,6,14,7,8,
+2025,23,Qatar GP,Yes,P. Gasly,ALP,9,14,12,13,
+2025,23,Qatar GP,Yes,F. Colapinto,ALP,20,14,15,16,
+2025,23,Qatar GP,Yes,L. Lawson,RBS,12,9,13,14,
+2025,24,Abu Dhabi GP,No,L. Norris,MCL,2,3,,,
+2025,24,Abu Dhabi GP,No,O. Piastri,MCL,3,2,,,
+2025,24,Abu Dhabi GP,No,M. Verstappen,RBR,1,1,,,
+2025,24,Abu Dhabi GP,No,G. Russell,MER,4,4,,,
+2025,24,Abu Dhabi GP,No,K. Antonelli,MER,14,12,,,
+2025,24,Abu Dhabi GP,No,C. Leclerc,FER,5,5,,,
+2025,24,Abu Dhabi GP,No,L. Hamilton,FER,16,8,,,
+2025,24,Abu Dhabi GP,No,F. Alonso,AMR,6,6,,,
+2025,24,Abu Dhabi GP,No,C. Sainz Jr,WIL,12,14,,,
+2025,24,Abu Dhabi GP,No,A. Albon,WIL,17,14,,,
+2025,24,Abu Dhabi GP,No,I. Hadjar,RBS,9,14,,,
+2025,24,Abu Dhabi GP,No,P. Gasly,ALP,19,14,,,
+2025,24,Abu Dhabi GP,No,F. Colapinto,ALP,20,14,,,
+2025,24,Abu Dhabi GP,No,L. Lawson,RBS,13,14,,,

@@ -1,0 +1,199 @@
+Driver,Type,Round,E_Points
+M. Verstappen,DRIVER,4,101.2
+M. Verstappen,DRIVER,5,101.2
+M. Verstappen,DRIVER,6,112.1
+M. Verstappen,DRIVER,7,112.1
+M. Verstappen,DRIVER,8,101.2
+M. Verstappen,DRIVER,9,101.2
+G. Russell,DRIVER,4,98.2
+G. Russell,DRIVER,5,98.2
+G. Russell,DRIVER,6,109.0
+G. Russell,DRIVER,7,109.0
+G. Russell,DRIVER,8,98.2
+G. Russell,DRIVER,9,98.2
+L. Norris,DRIVER,4,100.4
+L. Norris,DRIVER,5,100.4
+L. Norris,DRIVER,6,109.6
+L. Norris,DRIVER,7,109.6
+L. Norris,DRIVER,8,100.4
+L. Norris,DRIVER,9,100.4
+O. Piastri,DRIVER,4,93.1
+O. Piastri,DRIVER,5,93.1
+O. Piastri,DRIVER,6,100.4
+O. Piastri,DRIVER,7,100.4
+O. Piastri,DRIVER,8,93.1
+O. Piastri,DRIVER,9,93.1
+K. Antonelli,DRIVER,4,78.2
+K. Antonelli,DRIVER,5,78.2
+K. Antonelli,DRIVER,6,86.8
+K. Antonelli,DRIVER,7,86.8
+K. Antonelli,DRIVER,8,78.2
+K. Antonelli,DRIVER,9,78.2
+C. Leclerc,DRIVER,4,95.2
+C. Leclerc,DRIVER,5,95.2
+C. Leclerc,DRIVER,6,101.5
+C. Leclerc,DRIVER,7,101.5
+C. Leclerc,DRIVER,8,95.2
+C. Leclerc,DRIVER,9,95.2
+F. Alonso,DRIVER,4,78.6
+F. Alonso,DRIVER,5,78.6
+F. Alonso,DRIVER,6,78.6
+F. Alonso,DRIVER,7,78.6
+F. Alonso,DRIVER,8,78.6
+F. Alonso,DRIVER,9,78.6
+L. Hamilton,DRIVER,4,86.0
+L. Hamilton,DRIVER,5,86.0
+L. Hamilton,DRIVER,6,93.2
+L. Hamilton,DRIVER,7,93.2
+L. Hamilton,DRIVER,8,86.0
+L. Hamilton,DRIVER,9,86.0
+I. Hadjar,DRIVER,4,74.4
+I. Hadjar,DRIVER,5,74.4
+I. Hadjar,DRIVER,6,77.4
+I. Hadjar,DRIVER,7,77.4
+I. Hadjar,DRIVER,8,74.4
+I. Hadjar,DRIVER,9,74.4
+P. Gasly,DRIVER,4,73.6
+P. Gasly,DRIVER,5,73.6
+P. Gasly,DRIVER,6,73.6
+P. Gasly,DRIVER,7,73.6
+P. Gasly,DRIVER,8,73.6
+P. Gasly,DRIVER,9,73.6
+L. Stroll,DRIVER,4,87.8
+L. Stroll,DRIVER,5,87.8
+L. Stroll,DRIVER,6,87.8
+L. Stroll,DRIVER,7,87.8
+L. Stroll,DRIVER,8,87.8
+L. Stroll,DRIVER,9,87.8
+C. Sainz Jr,DRIVER,4,86.5
+C. Sainz Jr,DRIVER,5,86.5
+C. Sainz Jr,DRIVER,6,91.1
+C. Sainz Jr,DRIVER,7,91.1
+C. Sainz Jr,DRIVER,8,86.5
+C. Sainz Jr,DRIVER,9,86.5
+L. Lawson,DRIVER,4,74.5
+L. Lawson,DRIVER,5,74.5
+L. Lawson,DRIVER,6,74.5
+L. Lawson,DRIVER,7,74.5
+L. Lawson,DRIVER,8,74.5
+L. Lawson,DRIVER,9,74.5
+A. Albon,DRIVER,4,76.0
+A. Albon,DRIVER,5,76.0
+A. Albon,DRIVER,6,76.8
+A. Albon,DRIVER,7,76.8
+A. Albon,DRIVER,8,76.0
+A. Albon,DRIVER,9,76.0
+N. Hulkenberg,DRIVER,4,63.0
+N. Hulkenberg,DRIVER,5,63.0
+N. Hulkenberg,DRIVER,6,63.0
+N. Hulkenberg,DRIVER,7,63.0
+N. Hulkenberg,DRIVER,8,63.0
+N. Hulkenberg,DRIVER,9,63.0
+G. Bortoleto,DRIVER,4,63.0
+G. Bortoleto,DRIVER,5,63.0
+G. Bortoleto,DRIVER,6,63.0
+G. Bortoleto,DRIVER,7,63.0
+G. Bortoleto,DRIVER,8,63.0
+G. Bortoleto,DRIVER,9,63.0
+O. Bearman,DRIVER,4,63.0
+O. Bearman,DRIVER,5,63.0
+O. Bearman,DRIVER,6,63.0
+O. Bearman,DRIVER,7,63.0
+O. Bearman,DRIVER,8,63.0
+O. Bearman,DRIVER,9,63.0
+E. Ocon,DRIVER,4,105.2
+E. Ocon,DRIVER,5,105.2
+E. Ocon,DRIVER,6,112.7
+E. Ocon,DRIVER,7,112.7
+E. Ocon,DRIVER,8,105.2
+E. Ocon,DRIVER,9,105.2
+V. Bottas,DRIVER,4,63.0
+V. Bottas,DRIVER,5,63.0
+V. Bottas,DRIVER,6,63.0
+V. Bottas,DRIVER,7,63.0
+V. Bottas,DRIVER,8,63.0
+V. Bottas,DRIVER,9,63.0
+S. Perez,DRIVER,4,90.6
+S. Perez,DRIVER,5,90.6
+S. Perez,DRIVER,6,95.5
+S. Perez,DRIVER,7,95.5
+S. Perez,DRIVER,8,90.6
+S. Perez,DRIVER,9,90.6
+F. Colapinto,DRIVER,4,68.3
+F. Colapinto,DRIVER,5,68.3
+F. Colapinto,DRIVER,6,68.3
+F. Colapinto,DRIVER,7,68.3
+F. Colapinto,DRIVER,8,68.3
+F. Colapinto,DRIVER,9,68.3
+A. Lindblad,DRIVER,4,63.0
+A. Lindblad,DRIVER,5,63.0
+A. Lindblad,DRIVER,6,63.0
+A. Lindblad,DRIVER,7,63.0
+A. Lindblad,DRIVER,8,63.0
+A. Lindblad,DRIVER,9,63.0
+Mercedes,TEAM,4,90.0
+Mercedes,TEAM,5,90.0
+Mercedes,TEAM,6,90.0
+Mercedes,TEAM,7,90.0
+Mercedes,TEAM,8,90.0
+Mercedes,TEAM,9,90.0
+McLaren,TEAM,4,90.0
+McLaren,TEAM,5,90.0
+McLaren,TEAM,6,90.0
+McLaren,TEAM,7,90.0
+McLaren,TEAM,8,90.0
+McLaren,TEAM,9,90.0
+Red Bull,TEAM,4,83.2
+Red Bull,TEAM,5,83.2
+Red Bull,TEAM,6,83.2
+Red Bull,TEAM,7,83.2
+Red Bull,TEAM,8,83.2
+Red Bull,TEAM,9,83.2
+Ferrari,TEAM,4,78.4
+Ferrari,TEAM,5,78.4
+Ferrari,TEAM,6,78.4
+Ferrari,TEAM,7,78.4
+Ferrari,TEAM,8,78.4
+Ferrari,TEAM,9,78.4
+Aston Martin,TEAM,4,73.6
+Aston Martin,TEAM,5,73.6
+Aston Martin,TEAM,6,73.6
+Aston Martin,TEAM,7,73.6
+Aston Martin,TEAM,8,73.6
+Aston Martin,TEAM,9,73.6
+Williams,TEAM,4,68.8
+Williams,TEAM,5,68.8
+Williams,TEAM,6,68.8
+Williams,TEAM,7,68.8
+Williams,TEAM,8,68.8
+Williams,TEAM,9,68.8
+Racing Bulls,TEAM,4,63.9
+Racing Bulls,TEAM,5,63.9
+Racing Bulls,TEAM,6,63.9
+Racing Bulls,TEAM,7,63.9
+Racing Bulls,TEAM,8,63.9
+Racing Bulls,TEAM,9,63.9
+Alpine,TEAM,4,59.1
+Alpine,TEAM,5,59.1
+Alpine,TEAM,6,59.1
+Alpine,TEAM,7,59.1
+Alpine,TEAM,8,59.1
+Alpine,TEAM,9,59.1
+Audi,TEAM,4,54.3
+Audi,TEAM,5,54.3
+Audi,TEAM,6,54.3
+Audi,TEAM,7,54.3
+Audi,TEAM,8,54.3
+Audi,TEAM,9,54.3
+Cadillac,TEAM,4,49.5
+Cadillac,TEAM,5,49.5
+Cadillac,TEAM,6,49.5
+Cadillac,TEAM,7,49.5
+Cadillac,TEAM,8,49.5
+Cadillac,TEAM,9,49.5
+Haas,TEAM,4,44.6
+Haas,TEAM,5,44.6
+Haas,TEAM,6,44.6
+Haas,TEAM,7,44.6
+Haas,TEAM,8,44.6
+Haas,TEAM,9,44.6

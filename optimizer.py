@@ -4,9 +4,7 @@ import pulp
 import os
 import re
 import json
-import pulp
-import os
-import re
+from predictor import calculate_e_points, load_local_data
 
 BASE_DIR = r"c:\Users\adam\OneDrive\Documents\projects\gridrival-optimizer"
 
@@ -144,16 +142,11 @@ def compute_salaries(drivers_teams, e_points, start_round=4, horizon=5):
             base_var = default_s - s_before
             adj_raw = base_var / 4.0
             
-            # Round down to nearest 100k (0.1m)
-            abs_raw = abs(adj_raw)
-            abs_rounded = np.floor(abs_raw / 0.1) * 0.1
-            adj_rounded = np.sign(adj_raw) * abs_rounded
+            # The "Smoothing" Formula
+            # Round down to nearest 0.1M
+            adj_rounded = np.floor(adj_raw * 10) / 10.0
             
-            # Minimum absolute adjustment
-            if abs_rounded > 0 and abs_rounded < 0.1:
-                adj_rounded = np.sign(adj_rounded) * 0.1
-                
-            # Clamp
+            # Clamp between -max_adj and max_adj
             adj_clamped = max(min(adj_rounded, max_adj), -max_adj)
             
             deltas[(entity, t)] = adj_clamped
@@ -163,10 +156,29 @@ def compute_salaries(drivers_teams, e_points, start_round=4, horizon=5):
     return salaries, deltas
 
 def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon=5, GAMMA=1.0):
-    e_points = generate_expected_points(drivers_teams, hist_perf, rounds_df=None, start_round=start_round, horizon=horizon) # Rounds passed explicitly if using track types
-    salaries, deltas = compute_salaries(drivers_teams, e_points, start_round, horizon)
+    # Retrieve predictions from our new predictor module
+    rounds_df = pd.read_csv(os.path.join(BASE_DIR, "GridRivals - rounds.csv")) if os.path.exists(os.path.join(BASE_DIR, "GridRivals - rounds.csv")) else pd.DataFrame()
+    pred_df = calculate_e_points(drivers_teams, drivers_teams[drivers_teams['type']=='TEAM'], hist_perf, rounds_df)
+    
+    e_points = {}
+    if not pred_df.empty:
+        for _, row in pred_df.iterrows():
+            e_points[(row['Driver'], row['Round'])] = row['E_Points']
+            # Also store with type for team mapping just in case
+            e_points[(row['Driver'], row['Round'], row['Type'])] = row['E_Points']
+    else:
+        # Fallback if prediction fails
+        return None
+        
+    try:
+        salaries, deltas = compute_salaries(drivers_teams, e_points, start_round, horizon)
+    except KeyError as e:
+        print(f"KeyError in compute_salaries: {e}")
+        return {"error": f"KeyError in compute_salaries: {e}"}
     
     rounds = list(range(start_round, start_round + horizon))
+    if drivers_teams.empty:
+        return None
     elements = list(drivers_teams['name'])
     is_driver = {row['name']: (row['type'] == 'DRIVER') for _, row in drivers_teams.iterrows()}
     
@@ -233,9 +245,18 @@ def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon
             else:
                 # Must be on roster
                 prob += T_var[e, t] <= x[e, t], f"Talent_On_Roster_{e}_{t}"
-                # Must be affordable (salary <= 18.0)
+                    # Must be affordable (salary <= 18.0)
                 if salaries[(e, t)] > 18.0:
                     prob += T_var[e, t] == 0, f"Talent_Salary_Cap_{e}_{t}"
+                    
+    # Current Team Constraints
+    if current_team is not None and not current_team.empty:
+        for _, row in current_team.iterrows():
+            e = row['name']
+            l_rem = int(row.get('length_remaining', 1))
+            if e in elements and l_rem > 0:
+                for i in range(min(l_rem, horizon)):
+                    prob += x[e, start_round + i] == 1, f"CustomTeam_Lock_{e}_{start_round+i}"
                     
     # Dynamic Budget Constraints
     # Initial budget: 100.0 (let's assume 100M total budget)
@@ -253,11 +274,23 @@ def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon
         prob += cost_expr <= pv_expr, f"Budget_{t}"
         
     # Objective Function
-    # sum( points + gamma * delta PV )
-    obj_points = pulp.lpSum((e_points[(e, t)] * x[e, t]) + (e_points[(e, t)] * T_var[e, t]) for e in elements for t in rounds)
+    # sum( points + gamma * delta PV ) - Early Season Uncertainty Penalty
+    try:
+        obj_points = pulp.lpSum((e_points[(e, t)] * x[e, t]) + (e_points[(e, t)] * T_var[e, t]) for e in elements for t in rounds)
+    except KeyError as e:
+        print(f"KeyError in Objective processing points for {e}")
+        return {"error": f"KeyError in Objective points: {e}"}
+        
+    # Early Season Contract Penalty: applies to contracts length >= 3. Scales inversely with start_round (t)
+    base_risk = 3.0 # Points penalty multiplier
+    penalty_expr = pulp.lpSum(
+        base_risk * (l - 2) * max(0, (8 - t) / 7.0) * z[e, t, l] 
+        for e in elements for t in rounds for l in lengths if l >= 3
+    )
+        
     obj_growth = pulp.lpSum(deltas[(e, t)] * x[e, t] for e in elements for t in rounds)
     
-    prob += obj_points + GAMMA * obj_growth, "Objective"
+    prob += obj_points - penalty_expr + GAMMA * obj_growth, "Objective"
     
     # Solve
     prob.solve(pulp.PULP_CBC_CMD(msg=False))
@@ -328,23 +361,5 @@ def run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon
         'actions': parsed_actions
     }
 
-if __name__ == '__main__':
-    drivers_teams, hist_perf, rounds_df, current_team = load_data()
-    
-    results = []
-    
-    print("Running with Salary Farming bias (Gamma=2.0)")
-    r1 = run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon=5, GAMMA=2.0)
-    if r1: results.append(r1)
-    
-    print("\nRunning with Raw Points bias (Gamma=0.0)")
-    r2 = run_optimizer(drivers_teams, hist_perf, current_team, start_round=4, horizon=5, GAMMA=0.0)
-    if r2: results.append(r2)
-    
-    # Save to JS file to avoid CORS issues on local UI
-    out_path = os.path.join(BASE_DIR, 'dashboard_data.js')
-    with open(out_path, 'w') as f:
-        f.write("const dashboardData = ")
-        json.dump(results, f, indent=2)
-        f.write(";")
-    print(f"Results saved to {out_path}")
+    # This block can remain for debugging, but app.py drives main execution now
+    pass

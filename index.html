@@ -62,7 +62,60 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+        }
+
+        button:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .alert {
+            display: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .alert.success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+
+        .alert.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+            display: block;
         }
 
         .card {
@@ -244,32 +297,139 @@
         <p class="subtitle">Multi-Period Portfolio Projections & Optimal Rosters</p>
     </header>
 
-    <div class="container" id="dashboard-container">
-        <div class="loading">Loading dashboard data... Please run optimizer.py first if empty.</div>
+    <div class="controls">
+        <button id="btn-fetch" onclick="fetchLatestData()">Fetch Latest F1 Data</button>
+        <button id="btn-optimize" onclick="runOptimization()">Run Optimization (All Teams)</button>
+        <button id="btn-validate" onclick="checkCalculations()">Check Calculations (Validate)</button>
     </div>
 
-    <script src="dashboard_data.js"></script>
+    <div id="alert-box" class="alert"></div>
+
+    <div class="container" id="dashboard-container">
+        <div class="loading">Dashboard data will appear here. Click 'Run Optimization' to begin.</div>
+    </div>
+
+    <!-- View API Downloaded Data -->
+    <div class="card" style="margin-top: 3rem; max-width: 1400px; width: 100%;">
+        <div class="card-header">
+            <h2 class="card-title">View OpenF1 / Expected Data</h2>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+            <label for="race-selector" style="color: var(--text-muted); margin-right: 1rem;">Select Race:</label>
+            <select id="race-selector" onchange="fetchRaceData()"
+                style="padding: 0.5rem; border-radius: 8px; background: rgba(0,0,0,0.2); color: var(--text-main); border: 1px solid var(--card-border); font-family: inherit; font-size: 1rem; width: 300px;">
+                <option value="">Loading races...</option>
+            </select>
+        </div>
+        <div id="race-data-container">
+            <div class="loading">Select a race to view its downloaded prediction data.</div>
+        </div>
+    </div>
+
+    <!-- Global Roster Editor -->
+    <div class="card" style="margin-top: 3rem; max-width: 1400px; width: 100%;">
+        <div class="card-header">
+            <h2 class="card-title">Global Roster Editor</h2>
+            <button onclick="saveRoster()" id="btn-save-roster">Save Roster Data</button>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Edit salaries and points directly. Changes will be
+            saved to your roster CSV.</p>
+        <div id="roster-editor-container" style="max-height: 400px; overflow-y: auto;">
+            <div class="loading">Loading roster...</div>
+        </div>
+    </div>
+
+    <!-- Team Builder -->
+    <div class="card" style="margin-top: 3rem; max-width: 1400px; width: 100%;">
+        <div class="card-header">
+            <h2 class="card-title">Custom Team Builder</h2>
+            <button onclick="saveTeams()" id="btn-save-teams">Save Teams to JSON</button>
+        </div>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Configure up to 4 teams. Select entities and contract
+            length remaining (1-5). The optimizer will read these constraints.</p>
+        <div id="team-builder-container"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div class="loading">Loading teams...</div>
+        </div>
+    </div>
+
     <script>
-        function loadDashboardData() {
-            if (typeof dashboardData !== 'undefined') {
-                renderDashboard(dashboardData);
+        const API_BASE = "http://127.0.0.1:5000/api";
+
+        function showAlert(msg, isError = false) {
+            const box = document.getElementById('alert-box');
+            box.className = isError ? 'alert error' : 'alert success';
+            box.innerText = msg;
+            setTimeout(() => box.style.display = 'none', 5000);
+        }
+
+        function setButtonLoading(btnId, isLoading) {
+            const btn = document.getElementById(btnId);
+            if (isLoading) {
+                btn.dataset.lockedText = btn.innerText;
+                btn.innerText = "Processing...";
+                btn.disabled = true;
             } else {
-                console.error("Error fetching data");
-                document.getElementById('dashboard-container').innerHTML = `
-                    <div style="text-align:center; color: #ef4444; grid-column: 1 / -1;">
-                        <h2>Error loading data</h2>
-                        <p>Could not load <code>dashboard_data.js</code>. Make sure to run <code>python optimizer.py</code> first.</p>
-                    </div>
-                `;
+                btn.innerText = btn.dataset.lockedText || btn.innerText;
+                btn.disabled = false;
             }
+        }
+
+        async function fetchLatestData() {
+            setButtonLoading('btn-fetch', true);
+            try {
+                const res = await fetch(`${API_BASE}/fetch_latest`, { method: 'POST' });
+                const data = await res.json();
+                if (res.ok) showAlert("OpenF1 data fetched and predictions updated!");
+                else showAlert(data.message, true);
+            } catch (e) { showAlert("Error connecting to server.", true); }
+            setButtonLoading('btn-fetch', false);
+        }
+
+        async function runOptimization() {
+            setButtonLoading('btn-optimize', true);
+            const container = document.getElementById('dashboard-container');
+            container.innerHTML = '<div class="loading">Optimizing rosters... this may take a moment.</div>';
+            try {
+                const res = await fetch(`${API_BASE}/run_optimization`, { method: 'POST' });
+                const data = await res.json();
+                if (res.ok) {
+                    renderDashboard(data.data);
+                    showAlert("Optimization complete!");
+                }
+                else showAlert(data.message || "Optimization failed", true);
+            } catch (e) {
+                container.innerHTML = '<div class="loading" style="color:#ef4444">Error connecting to server. Is app.py running?</div>';
+                showAlert("Error connecting to server.", true);
+            }
+            setButtonLoading('btn-optimize', false);
+        }
+
+        async function checkCalculations() {
+            setButtonLoading('btn-validate', true);
+            try {
+                const res = await fetch(`${API_BASE}/validate`, { method: 'POST' });
+                const data = await res.json();
+                if (res.ok) {
+                    if (data.log && data.log.length > 0) {
+                        const mismatches = data.log.filter(l => l.logic_flag !== 'OK').length;
+                        showAlert(`Validation complete. ${mismatches} issues found. Check validation_log.csv`);
+                    } else {
+                        showAlert("Validation complete. No mismatches found!");
+                    }
+                }
+                else showAlert(data.message, true);
+            } catch (e) { showAlert("Error connecting to server.", true); }
+            setButtonLoading('btn-validate', false);
         }
 
         function renderDashboard(data) {
             const container = document.getElementById('dashboard-container');
             container.innerHTML = ''; // Clear loading text
 
-            data.forEach(strategy => {
-                const title = strategy.gamma > 0 ? "Salary Farming Bias" : "Raw Points Bias";
+            data.forEach((strategy, index) => {
+                const biasText = strategy.gamma > 0 ? "Farming Bias" : "Points Bias";
+                const title = strategy.team_id ? `${strategy.team_id} (${biasText})` : `Strategy ${index + 1} (${biasText})`;
 
                 // Sort actions: TEAM first, then TALENT, then DRIVERs compiled alphabetically
                 const sortedActions = strategy.actions.sort((a, b) => {
@@ -331,8 +491,305 @@
             });
         }
 
-        // Load data on page init
-        loadDashboardData();
+        // --- Feature: API Data Viewer ---
+        async function loadRaces() {
+            try {
+                const res = await fetch(`${API_BASE}/get_races`);
+                const data = await res.json();
+                if (res.ok && data.races) {
+                    const selector = document.getElementById('race-selector');
+                    selector.innerHTML = '<option value="">-- Select a Race Option --</option>';
+                    data.races.forEach(r => {
+                        selector.innerHTML += `<option value="${r.round}">Round ${r.round}: ${r.race_name} (${r.country})</option>`;
+                    });
+                }
+            } catch (e) {
+                console.error("Error loading races:", e);
+            }
+        }
+
+        async function fetchRaceData() {
+            const selector = document.getElementById('race-selector');
+            const container = document.getElementById('race-data-container');
+            const roundId = selector.value;
+
+            if (!roundId) {
+                container.innerHTML = '<div class="loading">Select a race to view its downloaded prediction data.</div>';
+                return;
+            }
+
+            container.innerHTML = '<div class="loading">Loading data...</div>';
+
+            try {
+                const res = await fetch(`${API_BASE}/get_race_data/${roundId}`);
+                const result = await res.json();
+
+                const histRes = await fetch(`${API_BASE}/get_historical_track/${roundId}`);
+                const histResult = await histRes.json();
+
+                let combinedHtml = '';
+
+                if (res.ok) {
+                    if (!result.data || result.data.length === 0) {
+                        combinedHtml += '<div class="loading" style="color: var(--warning); margin-bottom: 2rem;">No API data downloaded for this race yet. Fetch later!</div>';
+                    } else {
+                        // Build table
+                        let tableHtml = `
+                        <h3 style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1rem; color: #60a5fa;">Expected Points (OpenF1 Logic)</h3>
+                        <table style="width: 100%; text-align: left; border-collapse: collapse; margin-bottom: 2rem;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--card-border); color: var(--text-muted);">
+                                    <th style="padding: 0.75rem;">Type</th>
+                                    <th style="padding: 0.75rem;">Name</th>
+                                    <th style="padding: 0.75rem;">Expected Points</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        `;
+
+                        // Sort to have Drivers first, then Teams
+                        result.data.sort((a, b) => a.Type.localeCompare(b.Type) || a.Driver.localeCompare(b.Driver));
+
+                        result.data.forEach(item => {
+                            const typeColor = item.Type === 'TEAM' ? '#c4b5fd' : '#cbd5e1';
+                            tableHtml += `
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;">
+                                    <td style="padding: 0.75rem; color: ${typeColor}; font-size: 0.875rem; font-weight: 600;">${item.Type}</td>
+                                    <td style="padding: 0.75rem; font-weight: 500;">${item.Driver}</td>
+                                    <td style="padding: 0.75rem; color: #60a5fa; font-weight: 600;">${item.E_Points}</td>
+                                </tr>
+                            `;
+                        });
+
+                        tableHtml += `</tbody></table>`;
+                        combinedHtml += tableHtml;
+                    }
+                } else {
+                    combinedHtml += `<div class="loading" style="color: #ef4444;">Error: ${result.message || "Failed to fetch expected data"}</div>`;
+                }
+
+                if (histRes.ok && histResult.data && histResult.data.length > 0) {
+                    let histHtml = `
+                    <h3 style="margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1rem; color: #a78bfa;">Historical Track Performance (Type: ${histResult.track_type})</h3>
+                    <div style="max-height: 400px; overflow-y: auto; border: 1px solid var(--card-border); border-radius: 8px;">
+                        <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                            <thead style="position: sticky; top: 0; background: var(--card-bg); z-index: 1;">
+                                <tr style="border-bottom: 1px solid var(--card-border); color: var(--text-muted);">
+                                    <th style="padding: 0.5rem;">Year</th>
+                                    <th style="padding: 0.5rem;">Round</th>
+                                    <th style="padding: 0.5rem;">Race Name</th>
+                                    <th style="padding: 0.5rem;">Driver</th>
+                                    <th style="padding: 0.5rem;">Finish</th>
+                                    <th style="padding: 0.5rem;">Quali</th>
+                                    <th style="padding: 0.5rem;">Sprint</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+
+                    histResult.data.forEach(item => {
+                        let sprintHtml = '';
+                        if (item.is_sprint_weekend == 1 || item.is_sprint_weekend == 'TRUE' || item.is_sprint_weekend === true || item.is_sprint_weekend == 'Yes') {
+                            const sf = item.sprint_finish || '-';
+                            const sq = item.sprint_quali_position || '-';
+                            if (sf !== '-' || sq !== '-') {
+                                sprintHtml = `<span style="font-size: 0.65rem; background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 0.2rem 0.4rem; border-radius: 4px; font-weight: 600; white-space: nowrap;">F:${sf} Q:${sq}</span>`;
+                            }
+                        }
+
+                        histHtml += `
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <td style="padding: 0.5rem; color: var(--text-muted);">${item.year || '2025'}</td>
+                                <td style="padding: 0.5rem; color: var(--text-muted);">${item.round}</td>
+                                <td style="padding: 0.5rem; color: var(--text-muted);">${item.race_name}</td>
+                                <td style="padding: 0.5rem; font-weight: 500;">${item.driver_name}</td>
+                                <td style="padding: 0.5rem; color: #10b981; font-weight: 600;">${item.race_finish}</td>
+                                <td style="padding: 0.5rem;">${item.quali_position}</td>
+                                <td style="padding: 0.5rem;">${sprintHtml}</td>
+                            </tr>
+                        `;
+                    });
+
+                    histHtml += `</tbody></table></div>`;
+                    combinedHtml += histHtml;
+                }
+
+                container.innerHTML = combinedHtml;
+
+            } catch (e) {
+                container.innerHTML = '<div class="loading" style="color: #ef4444;">Error connecting to server.</div>';
+            }
+        }
+
+        // --- Feature: Global Roster Editor ---
+        let globalRoster = [];
+
+        async function loadRoster() {
+            try {
+                const res = await fetch(`${API_BASE}/get_roster`);
+                const data = await res.json();
+                if (res.ok) {
+                    globalRoster = data.roster;
+                    renderRosterEditor();
+                    renderTeamBuilder();
+                }
+            } catch (e) {
+                console.error("Error loading roster:", e);
+            }
+        }
+
+        function renderRosterEditor() {
+            const container = document.getElementById('roster-editor-container');
+            if (!globalRoster || globalRoster.length === 0) {
+                container.innerHTML = '<div class="loading">No roster found.</div>';
+                return;
+            }
+
+            let tableHtml = `
+            <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                <thead style="position: sticky; top: 0; background: var(--card-bg); z-index: 1;">
+                    <tr style="border-bottom: 1px solid var(--card-border); color: var(--text-muted);">
+                        <th style="padding: 0.75rem;">Type</th>
+                        <th style="padding: 0.75rem;">Name</th>
+                        <th style="padding: 0.75rem;">Code</th>
+                        <th style="padding: 0.75rem;">Salary (M)</th>
+                        <th style="padding: 0.75rem;">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            globalRoster.forEach((item, index) => {
+                const typeColor = item.type === 'TEAM' ? '#c4b5fd' : '#cbd5e1';
+                tableHtml += `
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s;">
+                        <td style="padding: 0.5rem; color: ${typeColor}; font-size: 0.875rem; font-weight: 600;">${item.type}</td>
+                        <td style="padding: 0.5rem; font-weight: 500;">${item.name}</td>
+                        <td style="padding: 0.5rem;">${item.code}</td>
+                        <td style="padding: 0.5rem;">
+                            <input type="number" step="0.1" value="${item.salary}" onchange="updateRosterItem(${index}, 'salary', this.value)" style="width: 80px; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                        </td>
+                        <td style="padding: 0.5rem;">
+                            <input type="number" step="0.1" value="${item.points}" onchange="updateRosterItem(${index}, 'points', this.value)" style="width: 80px; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHtml += `</tbody></table>`;
+            container.innerHTML = tableHtml;
+        }
+
+        function updateRosterItem(index, field, value) {
+            globalRoster[index][field] = parseFloat(value);
+        }
+
+        async function saveRoster() {
+            setButtonLoading('btn-save-roster', true);
+            try {
+                const res = await fetch(`${API_BASE}/save_roster`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ roster: globalRoster })
+                });
+                const data = await res.json();
+                if (res.ok) showAlert(data.message);
+                else showAlert(data.message || "Failed to save roster", true);
+            } catch (e) {
+                showAlert("Error connecting to server.", true);
+            }
+            setButtonLoading('btn-save-roster', false);
+        }
+
+        // --- Feature: Team Builder ---
+        let customTeams = Array(4).fill().map((_, i) => ({
+            name: `Team ${i + 1}`,
+            constructor: '',
+            drivers: ['', '', '', '', ''],
+            lengths: {}
+        }));
+
+        function renderTeamBuilder() {
+            const container = document.getElementById('team-builder-container');
+            const teamsList = globalRoster.filter(r => r.type === 'TEAM');
+            const driversList = globalRoster.filter(r => r.type === 'DRIVER');
+
+            let html = '';
+            customTeams.forEach((team, tIndex) => {
+                let teamHtml = `
+                <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; border: 1px solid var(--card-border);">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-hover);">${team.name}</h3>
+                    
+                    <div style="margin-bottom: 0.5rem;">
+                        <label style="display:block; font-size: 0.8rem; color: var(--text-muted);">Constructor (1-5 Races)</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <select onchange="updateTeam(${tIndex}, 'constructor', this.value)" style="flex: 1; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                                <option value="">Select Constructor</option>
+                                ${teamsList.map(t => `<option value="${t.name}" ${team.constructor === t.name ? 'selected' : ''}>${t.name}</option>`).join('')}
+                            </select>
+                            <input type="number" min="1" max="5" value="${team.lengths[team.constructor] || 1}" onchange="updateTeamLength(${tIndex}, '${team.constructor}', this.value)" style="width: 50px; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                        </div>
+                    </div>
+                `;
+
+                for (let d = 0; d < 5; d++) {
+                    const currentDriver = team.drivers[d] || '';
+                    teamHtml += `
+                    <div style="margin-bottom: 0.5rem;">
+                        <label style="display:block; font-size: 0.8rem; color: var(--text-muted);">Driver ${d + 1}</label>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <select onchange="updateTeam(${tIndex}, 'driver', this.value, ${d})" style="flex: 1; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                                <option value="">Select Driver</option>
+                                ${driversList.map(t => `<option value="${t.name}" ${currentDriver === t.name ? 'selected' : ''}>${t.name}</option>`).join('')}
+                            </select>
+                            <input type="number" min="1" max="5" value="${team.lengths[currentDriver] || 1}" onchange="updateTeamLength(${tIndex}, '${currentDriver}', this.value)" style="width: 50px; padding: 0.25rem; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 4px;">
+                        </div>
+                    </div>
+                    `;
+                }
+
+                teamHtml += `</div>`;
+                html += teamHtml;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function updateTeam(tIndex, type, value, dIndex = -1) {
+            if (type === 'constructor') {
+                customTeams[tIndex].constructor = value;
+                if (value && !customTeams[tIndex].lengths[value]) customTeams[tIndex].lengths[value] = 1;
+            } else if (type === 'driver' && dIndex >= 0) {
+                customTeams[tIndex].drivers[dIndex] = value;
+                if (value && !customTeams[tIndex].lengths[value]) customTeams[tIndex].lengths[value] = 1;
+            }
+            renderTeamBuilder(); // Re-render to update the length binding
+        }
+
+        function updateTeamLength(tIndex, entityName, length) {
+            if (!entityName || entityName === 'undefined') return;
+            customTeams[tIndex].lengths[entityName] = parseInt(length);
+        }
+
+        async function saveTeams() {
+            setButtonLoading('btn-save-teams', true);
+            try {
+                const res = await fetch(`${API_BASE}/save_teams`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(customTeams)
+                });
+                const data = await res.json();
+                if (res.ok) showAlert("Teams successfully saved! Run Optimization to view results.");
+                else showAlert(data.message || "Failed to save teams", true);
+            } catch (e) {
+                showAlert("Error connecting to server.", true);
+            }
+            setButtonLoading('btn-save-teams', false);
+        }
+
+        loadRaces();
+        loadRoster();
     </script>
 </body>
 
